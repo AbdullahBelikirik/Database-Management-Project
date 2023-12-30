@@ -4,12 +4,25 @@
  */
 package petshop;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author MSI-NB
  */
 public class Login extends javax.swing.JFrame {
-
+    
+    private final String dbUrl = "jdbc:postgresql://localhost/postgres";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    private final String adminUsername = "admin";
+    private final String adminPassword = "1234";
     /**
      * Creates new form Login
      */
@@ -179,8 +192,62 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void login_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_login_btnActionPerformed
-
-        // login ekranındaki butona event ekledim. basınca giriş yapılacağına dair kodları buraya yazıyoruz.
+         try {                                          
+             String username = username_field.getText();
+             String password = password_field.getText();
+             String message;
+             Connection conn;
+             PreparedStatement Ps;
+             ResultSet Rs;
+             
+             if(username.isBlank() && password.isBlank()){
+                message="Please enter both username and password!";
+                JOptionPane.showMessageDialog(this, message);
+                username_field.setText("");
+                password_field.setText("");
+             }
+             
+             if(username.equals(adminUsername) && password.equals(adminPassword)){
+                message = "Welcome "+username;
+                JOptionPane.showMessageDialog(this, message);
+                dispose();
+                java.awt.EventQueue.invokeLater(() -> {
+                    //admin sayfası çağırılacak
+                    new admin().setVisible(true);
+                });
+             }
+             
+             try {
+                 conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+             } catch (SQLException e) {
+                 System.out.println(e.getMessage());
+             }
+             
+             Ps = (PreparedStatement) conn.prepareStatement("select * from Users where `Kullanici Adi` = ? and `Kullanici Sifresi` = ?",ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             Ps.setString(1, username);
+             Ps.setString(2, password);
+             Rs = Ps.executeQuery();
+             
+             if(Rs.first()){
+                message = "Welcome "+username;
+                JOptionPane.showMessageDialog(this, message);
+                dispose();
+                java.awt.EventQueue.invokeLater(() -> {
+                    //admin sayfası çağırılacak
+                    new admin().setVisible(true);
+                });
+             }
+             else{
+                message="Wrong username or password!";
+                JOptionPane.showMessageDialog(this, message);
+                username_field.setText("");
+                password_field.setText("");
+            }
+             
+             
+         } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_login_btnActionPerformed
 
