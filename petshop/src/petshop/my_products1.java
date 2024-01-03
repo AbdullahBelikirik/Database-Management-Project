@@ -8,12 +8,12 @@ package petshop;
  *
  * @author MSI-NB
  */
-public class ads extends javax.swing.JFrame {
+public class my_products1 extends javax.swing.JFrame {
 
     /**
-     * Creates new form ads
+     * Creates new form my_ads
      */
-    public ads() {
+    public my_products1() {
         initComponents();
     }
 
@@ -26,10 +26,7 @@ public class ads extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ads_Table = new javax.swing.JTable();
-        jLabel15 = new javax.swing.JLabel();
-        basvur_btn = new javax.swing.JButton();
+        type_field = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -44,44 +41,20 @@ public class ads extends javax.swing.JFrame {
         fatura_btn3 = new javax.swing.JButton();
         urun_btn3 = new javax.swing.JButton();
         cikis_btn3 = new javax.swing.JButton();
+        age_field = new javax.swing.JTextField();
+        sex_field = new javax.swing.JTextField();
+        delete_btn = new javax.swing.JButton();
+        edit_btn = new javax.swing.JButton();
+        username_Label = new javax.swing.JLabel();
+        username_Label1 = new javax.swing.JLabel();
+        username_Label4 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        products_Table = new javax.swing.JTable();
+        username_Label5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ads_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ads_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        ads_Table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "Type", "Age", "Gender", "Address", "Description"
-            }
-        ));
-        ads_Table.setRowHeight(30);
-        ads_Table.setRowMargin(2);
-        ads_Table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ads_TableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(ads_Table);
-
-        jLabel15.setFont(new java.awt.Font("Imprint MT Shadow", 1, 25)); // NOI18N
-        jLabel15.setText("ILANLAR");
-
-        basvur_btn.setBackground(new java.awt.Color(255, 204, 204));
-        basvur_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        basvur_btn.setText("BASVUR");
-        basvur_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        basvur_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        basvur_btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                basvur_btnActionPerformed(evt);
-            }
-        });
+        type_field.setBackground(new java.awt.Color(245, 245, 245));
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setPreferredSize(new java.awt.Dimension(1204, 163));
@@ -136,7 +109,6 @@ public class ads extends javax.swing.JFrame {
         urun_btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/customer.png"))); // NOI18N
 
         cikis_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        cikis_btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
         cikis_btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cikis_btn3logout_btn(evt);
@@ -174,7 +146,7 @@ public class ads extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(urun_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
@@ -211,55 +183,128 @@ public class ads extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        age_field.setBackground(new java.awt.Color(245, 245, 245));
+
+        sex_field.setBackground(new java.awt.Color(245, 245, 245));
+
+        delete_btn.setBackground(new java.awt.Color(255, 204, 204));
+        delete_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        delete_btn.setText("DELETE");
+        delete_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delete_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delete_btnActionPerformed(evt);
+            }
+        });
+
+        edit_btn.setBackground(new java.awt.Color(255, 204, 204));
+        edit_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        edit_btn.setText("EDIT");
+        edit_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edit_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        edit_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_btnActionPerformed(evt);
+            }
+        });
+
+        username_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label.setText("Amount");
+
+        username_Label1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label1.setText("Price");
+
+        username_Label4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label4.setText("Product Name");
+
+        products_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        products_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        products_Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Product Name", "Amount", "Price"
+            }
+        ));
+        products_Table.setRowHeight(30);
+        products_Table.setRowMargin(2);
+        products_Table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                products_TableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(products_Table);
+
+        username_Label5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label5.setText("Products");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1176, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1164, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(317, 317, 317))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(506, 506, 506))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(430, 430, 430)))
-                    .addContainerGap()))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(username_Label4)
+                    .addComponent(username_Label)
+                    .addComponent(username_Label1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sex_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(age_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(type_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(98, 98, 98)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(username_Label5)
+                .addGap(262, 262, 262))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 771, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(16, 16, 16)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(26, 26, 26)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(98, 98, 98)
-                    .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(150, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(username_Label5)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(type_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username_Label4))
+                        .addGap(40, 40, 40)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(username_Label)
+                            .addComponent(age_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(36, 36, 36)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(sex_field, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(username_Label1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(191, 191, 191))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(200, 200, 200)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ads_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ads_TableMouseClicked
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ads_TableMouseClicked
-
-    private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_basvur_btnActionPerformed
 
     private void hayvan_btn3pets_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hayvan_btn3pets_btn
         // TODO add your handling code here:
@@ -286,6 +331,21 @@ public class ads extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cikis_btn3logout_btn
 
+    private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_delete_btnActionPerformed
+
+    private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit_btnActionPerformed
+
+    private void products_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_products_TableMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_products_TableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -303,31 +363,32 @@ public class ads extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(my_products1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(my_products1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(my_products1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(my_products1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ads().setVisible(true);
+                new my_products1().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable ads_Table;
-    private javax.swing.JButton basvur_btn;
+    private javax.swing.JTextField age_field;
     private javax.swing.JButton cikis_btn3;
+    private javax.swing.JButton delete_btn;
+    private javax.swing.JButton edit_btn;
     private javax.swing.JButton fatura_btn3;
     private javax.swing.JButton hayvan_btn3;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel44;
@@ -339,6 +400,13 @@ public class ads extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
+    private javax.swing.JTable products_Table;
+    private javax.swing.JTextField sex_field;
+    private javax.swing.JTextField type_field;
     private javax.swing.JButton urun_btn3;
+    private javax.swing.JLabel username_Label;
+    private javax.swing.JLabel username_Label1;
+    private javax.swing.JLabel username_Label4;
+    private javax.swing.JLabel username_Label5;
     // End of variables declaration//GEN-END:variables
 }

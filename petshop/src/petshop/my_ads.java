@@ -26,8 +26,8 @@ public class my_ads extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        ıd_field = new javax.swing.JTextField();
-        productprice_field = new javax.swing.JTextField();
+        type_field = new javax.swing.JTextField();
+        description_field = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
@@ -42,16 +42,24 @@ public class my_ads extends javax.swing.JFrame {
         fatura_btn3 = new javax.swing.JButton();
         urun_btn3 = new javax.swing.JButton();
         cikis_btn3 = new javax.swing.JButton();
-        productname_field = new javax.swing.JTextField();
-        productquantity_field = new javax.swing.JTextField();
-        ürün_sil_btn = new javax.swing.JButton();
-        ürün_duzenle_btn = new javax.swing.JButton();
+        age_field = new javax.swing.JTextField();
+        sex_field = new javax.swing.JTextField();
+        delete_btn = new javax.swing.JButton();
+        edit_btn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ads_Table = new javax.swing.JTable();
+        username_Label = new javax.swing.JLabel();
+        username_Label1 = new javax.swing.JLabel();
+        username_Label2 = new javax.swing.JLabel();
+        username_Label3 = new javax.swing.JLabel();
+        username_Label4 = new javax.swing.JLabel();
+        address_field = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ıd_field.setBackground(new java.awt.Color(245, 245, 245));
+        type_field.setBackground(new java.awt.Color(245, 245, 245));
 
-        productprice_field.setBackground(new java.awt.Color(245, 245, 245));
+        description_field.setBackground(new java.awt.Color(245, 245, 245));
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setPreferredSize(new java.awt.Dimension(1204, 163));
@@ -143,7 +151,7 @@ public class my_ads extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(urun_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
@@ -180,80 +188,145 @@ public class my_ads extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        productname_field.setBackground(new java.awt.Color(245, 245, 245));
+        age_field.setBackground(new java.awt.Color(245, 245, 245));
 
-        productquantity_field.setBackground(new java.awt.Color(245, 245, 245));
+        sex_field.setBackground(new java.awt.Color(245, 245, 245));
 
-        ürün_sil_btn.setBackground(new java.awt.Color(255, 204, 204));
-        ürün_sil_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        ürün_sil_btn.setText("SIL");
-        ürün_sil_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ürün_sil_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ürün_sil_btn.addActionListener(new java.awt.event.ActionListener() {
+        delete_btn.setBackground(new java.awt.Color(255, 204, 204));
+        delete_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        delete_btn.setText("DELETE");
+        delete_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        delete_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        delete_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ürün_sil_btnActionPerformed(evt);
+                delete_btnActionPerformed(evt);
             }
         });
 
-        ürün_duzenle_btn.setBackground(new java.awt.Color(255, 204, 204));
-        ürün_duzenle_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        ürün_duzenle_btn.setText("DÜZENLE");
-        ürün_duzenle_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        ürün_duzenle_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ürün_duzenle_btn.addActionListener(new java.awt.event.ActionListener() {
+        edit_btn.setBackground(new java.awt.Color(255, 204, 204));
+        edit_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        edit_btn.setText("EDIT");
+        edit_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edit_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        edit_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ürün_duzenle_btnActionPerformed(evt);
+                edit_btnActionPerformed(evt);
             }
         });
+
+        ads_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ads_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        ads_Table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Type", "Age", "Gender", "Address", "Description"
+            }
+        ));
+        ads_Table.setRowHeight(30);
+        ads_Table.setRowMargin(2);
+        ads_Table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ads_TableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(ads_Table);
+
+        username_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label.setText("Age");
+
+        username_Label1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label1.setText("Sex");
+
+        username_Label2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label2.setText("Address");
+
+        username_Label3.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label3.setText("Description");
+
+        username_Label4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label4.setText("Type");
+
+        address_field.setBackground(new java.awt.Color(245, 245, 245));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1176, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(195, 195, 195)
+                .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(username_Label4)
+                    .addComponent(username_Label)
+                    .addComponent(username_Label1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(username_Label3)
+                            .addComponent(username_Label2))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(description_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(212, 212, 212)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(26, 26, 26)
-                                    .addComponent(ürün_sil_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(ürün_duzenle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(39, 39, 39)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(ıd_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                                        .addComponent(productquantity_field)
-                                        .addComponent(productprice_field)
-                                        .addComponent(productname_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))))
-                            .addGap(542, 542, 542))
-                        .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1164, Short.MAX_VALUE))
-                    .addContainerGap()))
+                    .addGap(257, 257, 257)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(type_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                        .addComponent(sex_field)
+                        .addComponent(age_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
+                    .addContainerGap(648, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(username_Label4)
+                        .addGap(29, 29, 29)
+                        .addComponent(username_Label)
+                        .addGap(30, 30, 30)
+                        .addComponent(username_Label1)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(username_Label2)
+                            .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(username_Label3)
+                            .addComponent(description_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(161, 161, 161)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(37, 37, 37))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(73, 73, 73)
-                    .addComponent(ıd_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(270, 270, 270)
+                    .addComponent(type_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(32, 32, 32)
-                    .addComponent(productname_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(age_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(33, 33, 33)
-                    .addComponent(productquantity_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(productprice_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(67, 67, 67)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ürün_sil_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ürün_duzenle_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(sex_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(343, Short.MAX_VALUE)))
         );
 
         pack();
@@ -284,15 +357,20 @@ public class my_ads extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cikis_btn3logout_btn
 
-    private void ürün_sil_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ürün_sil_btnActionPerformed
+    private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ürün_sil_btnActionPerformed
+    }//GEN-LAST:event_delete_btnActionPerformed
 
-    private void ürün_duzenle_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ürün_duzenle_btnActionPerformed
+    private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ürün_duzenle_btnActionPerformed
+    }//GEN-LAST:event_edit_btnActionPerformed
+
+    private void ads_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ads_TableMouseClicked
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ads_TableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -330,7 +408,13 @@ public class my_ads extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField address_field;
+    private javax.swing.JTable ads_Table;
+    private javax.swing.JTextField age_field;
     private javax.swing.JButton cikis_btn3;
+    private javax.swing.JButton delete_btn;
+    private javax.swing.JTextField description_field;
+    private javax.swing.JButton edit_btn;
     private javax.swing.JButton fatura_btn3;
     private javax.swing.JButton hayvan_btn3;
     private javax.swing.JLabel jLabel17;
@@ -341,14 +425,16 @@ public class my_ads extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel52;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
-    private javax.swing.JTextField productname_field;
-    private javax.swing.JTextField productprice_field;
-    private javax.swing.JTextField productquantity_field;
+    private javax.swing.JTextField sex_field;
+    private javax.swing.JTextField type_field;
     private javax.swing.JButton urun_btn3;
-    private javax.swing.JButton ürün_duzenle_btn;
-    private javax.swing.JButton ürün_sil_btn;
-    private javax.swing.JTextField ıd_field;
+    private javax.swing.JLabel username_Label;
+    private javax.swing.JLabel username_Label1;
+    private javax.swing.JLabel username_Label2;
+    private javax.swing.JLabel username_Label3;
+    private javax.swing.JLabel username_Label4;
     // End of variables declaration//GEN-END:variables
 }

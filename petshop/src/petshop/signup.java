@@ -26,16 +26,21 @@ public class signup extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        password_field4 = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        username_field = new javax.swing.JTextField();
-        password_field = new javax.swing.JPasswordField();
+        name_Label = new javax.swing.JLabel();
+        username_Label = new javax.swing.JLabel();
         signup_btn = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        password_field1 = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
-        password_field2 = new javax.swing.JPasswordField();
+        password_Label = new javax.swing.JLabel();
+        surname_field = new javax.swing.JPasswordField();
+        surname_Label = new javax.swing.JLabel();
+        username_field = new javax.swing.JPasswordField();
+        name_field = new javax.swing.JPasswordField();
+        password_field = new javax.swing.JPasswordField();
+        phonenumber_field = new javax.swing.JPasswordField();
+        address_field = new javax.swing.JPasswordField();
+        phonenumber_Label = new javax.swing.JLabel();
+        address_Label = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -43,24 +48,22 @@ public class signup extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        password_field4.setBackground(new java.awt.Color(245, 245, 245));
+        password_field4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                password_field4ActionPerformed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(246, 242, 242));
 
-        jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel2.setText("Parola ");
+        name_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        name_Label.setText("Name");
 
-        jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel4.setText("Kullanıcı Adı ");
-
-        username_field.setBackground(new java.awt.Color(245, 245, 245));
-
-        password_field.setBackground(new java.awt.Color(245, 245, 245));
-        password_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_fieldActionPerformed(evt);
-            }
-        });
+        username_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label.setText("Username");
 
         signup_btn.setBackground(new java.awt.Color(245, 171, 198));
         signup_btn.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
@@ -73,69 +76,129 @@ public class signup extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel5.setText("Parola ");
+        password_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        password_Label.setText("Password");
 
-        password_field1.setBackground(new java.awt.Color(245, 245, 245));
-        password_field1.addActionListener(new java.awt.event.ActionListener() {
+        surname_field.setBackground(new java.awt.Color(245, 245, 245));
+        surname_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_field1ActionPerformed(evt);
+                surname_fieldActionPerformed(evt);
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel6.setText("Parola ");
+        surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        surname_Label.setText("Surname");
 
-        password_field2.setBackground(new java.awt.Color(245, 245, 245));
-        password_field2.addActionListener(new java.awt.event.ActionListener() {
+        username_field.setBackground(new java.awt.Color(245, 245, 245));
+        username_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_field2ActionPerformed(evt);
+                username_fieldActionPerformed(evt);
             }
         });
+
+        name_field.setBackground(new java.awt.Color(245, 245, 245));
+        name_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                name_fieldActionPerformed(evt);
+            }
+        });
+
+        password_field.setBackground(new java.awt.Color(245, 245, 245));
+        password_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                password_fieldActionPerformed(evt);
+            }
+        });
+
+        phonenumber_field.setBackground(new java.awt.Color(245, 245, 245));
+        phonenumber_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phonenumber_fieldActionPerformed(evt);
+            }
+        });
+
+        address_field.setBackground(new java.awt.Color(245, 245, 245));
+        address_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                address_fieldActionPerformed(evt);
+            }
+        });
+
+        phonenumber_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        phonenumber_Label.setText("Phone Number");
+
+        address_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        address_Label.setText("Address");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addGap(56, 56, 56)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(70, 70, 70)
+                            .addComponent(name_Label))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(48, 48, 48)
+                            .addComponent(username_Label))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(surname_Label)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(address_Label)
+                            .addComponent(password_Label)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(phonenumber_Label)))
+                .addGap(64, 64, 64)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phonenumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password_field2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(212, Short.MAX_VALUE))
+                    .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surname_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(308, Short.MAX_VALUE)
                 .addComponent(signup_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(336, 336, 336))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(18, 18, 18)
+                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username_Label))
+                .addGap(12, 12, 12)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password_field1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(27, 27, 27)
+                    .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(name_Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(password_field2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(surname_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surname_Label))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(password_Label))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(phonenumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(address_Label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(phonenumber_Label)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(signup_btn)
                 .addGap(30, 30, 30))
         );
@@ -215,10 +278,6 @@ public class signup extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_password_fieldActionPerformed
-
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_signup_btnActionPerformed
@@ -229,13 +288,33 @@ public class signup extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1close_btnActionPerformed
 
-    private void password_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_field1ActionPerformed
+    private void surname_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surname_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_field1ActionPerformed
+    }//GEN-LAST:event_surname_fieldActionPerformed
 
-    private void password_field2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_field2ActionPerformed
+    private void username_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_fieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_field2ActionPerformed
+    }//GEN-LAST:event_username_fieldActionPerformed
+
+    private void password_field4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_field4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_password_field4ActionPerformed
+
+    private void name_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_name_fieldActionPerformed
+
+    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_password_fieldActionPerformed
+
+    private void phonenumber_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumber_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phonenumber_fieldActionPerformed
+
+    private void address_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_address_fieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,21 +352,26 @@ public class signup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel address_Label;
+    private javax.swing.JPasswordField address_field;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel name_Label;
+    private javax.swing.JPasswordField name_field;
+    private javax.swing.JLabel password_Label;
     private javax.swing.JPasswordField password_field;
-    private javax.swing.JPasswordField password_field1;
-    private javax.swing.JPasswordField password_field2;
+    private javax.swing.JPasswordField password_field4;
+    private javax.swing.JLabel phonenumber_Label;
+    private javax.swing.JPasswordField phonenumber_field;
     private javax.swing.JButton signup_btn;
-    private javax.swing.JTextField username_field;
+    private javax.swing.JLabel surname_Label;
+    private javax.swing.JPasswordField surname_field;
+    private javax.swing.JLabel username_Label;
+    private javax.swing.JPasswordField username_field;
     // End of variables declaration//GEN-END:variables
 }
