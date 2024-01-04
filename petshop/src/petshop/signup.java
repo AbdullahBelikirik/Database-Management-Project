@@ -4,12 +4,21 @@
  */
 package petshop;
 
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MSI-NB
  */
 public class signup extends javax.swing.JFrame {
-
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    private final String adminUsername = "admin";
+    private final String adminPassword = "1234";
     /**
      * Creates new form signup
      */
@@ -171,11 +180,15 @@ public class signup extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username_Label))
-                .addGap(12, 12, 12)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(username_Label)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_Label))
@@ -280,13 +293,39 @@ public class signup extends javax.swing.JFrame {
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
         // TODO add your handling code here:
+        String userName = username_field.getText();
+        String name = name_field.getText();
+        String surname = surname_field.getText();
+        String password = password_field.getText();
+        String address = address_field.getText();
+        String phoneNumber = phonenumber_field.getText();
+        try {
+            Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+            System.out.println("con"+ conn);
+            // SQL sorgusunu burada oluştur
+            String sql = "INSERT INTO users (name, surname, password, address, telno, username) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement preparedStmt = conn.prepareStatement(sql);
+            
+            // Değerleri set et
+            preparedStmt.setString(1, name);
+            preparedStmt.setString(2, surname);
+            preparedStmt.setString(3, password);
+            preparedStmt.setString(4, address);
+            preparedStmt.setString(5, phoneNumber);
+            preparedStmt.setString(6, userName);
+           
+            
+            
+            // Sorguyu çalıştır
+            preparedStmt.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Ekleme işlemi başarılı oldu.");
+        } catch (SQLException e) {
+            Logger.getLogger(signup.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        
     }//GEN-LAST:event_signup_btnActionPerformed
-
-    private void jButton1close_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1close_btnActionPerformed
-
-        dispose();
-        System.exit(0);
-    }//GEN-LAST:event_jButton1close_btnActionPerformed
 
     private void surname_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surname_fieldActionPerformed
         // TODO add your handling code here:
@@ -315,6 +354,12 @@ public class signup extends javax.swing.JFrame {
     private void address_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_address_fieldActionPerformed
+
+    private void jButton1close_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1close_btnActionPerformed
+
+        dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jButton1close_btnActionPerformed
 
     /**
      * @param args the command line arguments
