@@ -4,17 +4,32 @@
  */
 package petshop;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSI-NB
  */
-public class products extends javax.swing.JFrame {
-
+public class Products extends javax.swing.JFrame {
+    
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    Connection conn = null;
     /**
      * Creates new form products
      */
-    public products() {
+    public Products() throws SQLException {
         initComponents();
+        displayProducts();
     }
 
     /**
@@ -27,7 +42,7 @@ public class products extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        products_Table = new javax.swing.JTable();
+        productTable = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         basvur_btn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -47,9 +62,9 @@ public class products extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        products_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        products_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        products_Table.setModel(new javax.swing.table.DefaultTableModel(
+        productTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        productTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        productTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -60,14 +75,14 @@ public class products extends javax.swing.JFrame {
                 "Product Name", "Amount", "Price"
             }
         ));
-        products_Table.setRowHeight(30);
-        products_Table.setRowMargin(2);
-        products_Table.addMouseListener(new java.awt.event.MouseAdapter() {
+        productTable.setRowHeight(30);
+        productTable.setRowMargin(2);
+        productTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                products_TableMouseClicked(evt);
+                productTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(products_Table);
+        jScrollPane1.setViewportView(productTable);
 
         jLabel15.setFont(new java.awt.Font("Imprint MT Shadow", 1, 25)); // NOI18N
         jLabel15.setText("PRODUCTS");
@@ -249,13 +264,13 @@ public class products extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void products_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_products_TableMouseClicked
+    private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_products_TableMouseClicked
+    }//GEN-LAST:event_productTableMouseClicked
 
     private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
-
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_basvur_btnActionPerformed
 
@@ -296,20 +311,25 @@ public class products extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Products.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new products().setVisible(true);
+                try {
+                    new Products().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -331,7 +351,42 @@ public class products extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
-    private javax.swing.JTable products_Table;
+    private javax.swing.JTable productTable;
     private javax.swing.JButton urun_btn3;
     // End of variables declaration//GEN-END:variables
+
+    private void displayProducts() throws SQLException {
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        Statement selectStatement = conn.createStatement();
+        String SelectQuery = "Select count,name,price from products";
+        ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
+        
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        productTable.setModel(tableModel);
+        
+        selectStatement.close();
+        resultSet.close();
+    }
 }

@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author MSI-NB
  */
-public class signup extends javax.swing.JFrame {
+public class SignUp extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
@@ -22,7 +22,7 @@ public class signup extends javax.swing.JFrame {
     /**
      * Creates new form signup
      */
-    public signup() {
+    public SignUp() {
         initComponents();
     }
 
@@ -41,13 +41,13 @@ public class signup extends javax.swing.JFrame {
         username_Label = new javax.swing.JLabel();
         signup_btn = new javax.swing.JButton();
         password_Label = new javax.swing.JLabel();
-        surname_field = new javax.swing.JPasswordField();
+        surnameField = new javax.swing.JPasswordField();
         surname_Label = new javax.swing.JLabel();
-        username_field = new javax.swing.JPasswordField();
-        name_field = new javax.swing.JPasswordField();
-        password_field = new javax.swing.JPasswordField();
-        phonenumber_field = new javax.swing.JPasswordField();
-        address_field = new javax.swing.JPasswordField();
+        usernameField = new javax.swing.JPasswordField();
+        nameField = new javax.swing.JPasswordField();
+        passwordField = new javax.swing.JPasswordField();
+        phonenumberField = new javax.swing.JPasswordField();
+        addressField = new javax.swing.JPasswordField();
         phonenumber_Label = new javax.swing.JLabel();
         address_Label = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -88,48 +88,48 @@ public class signup extends javax.swing.JFrame {
         password_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         password_Label.setText("Password");
 
-        surname_field.setBackground(new java.awt.Color(245, 245, 245));
-        surname_field.addActionListener(new java.awt.event.ActionListener() {
+        surnameField.setBackground(new java.awt.Color(245, 245, 245));
+        surnameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surname_fieldActionPerformed(evt);
+                surnameFieldActionPerformed(evt);
             }
         });
 
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         surname_Label.setText("Surname");
 
-        username_field.setBackground(new java.awt.Color(245, 245, 245));
-        username_field.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setBackground(new java.awt.Color(245, 245, 245));
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                username_fieldActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
-        name_field.setBackground(new java.awt.Color(245, 245, 245));
-        name_field.addActionListener(new java.awt.event.ActionListener() {
+        nameField.setBackground(new java.awt.Color(245, 245, 245));
+        nameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                name_fieldActionPerformed(evt);
+                nameFieldActionPerformed(evt);
             }
         });
 
-        password_field.setBackground(new java.awt.Color(245, 245, 245));
-        password_field.addActionListener(new java.awt.event.ActionListener() {
+        passwordField.setBackground(new java.awt.Color(245, 245, 245));
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                password_fieldActionPerformed(evt);
+                passwordFieldActionPerformed(evt);
             }
         });
 
-        phonenumber_field.setBackground(new java.awt.Color(245, 245, 245));
-        phonenumber_field.addActionListener(new java.awt.event.ActionListener() {
+        phonenumberField.setBackground(new java.awt.Color(245, 245, 245));
+        phonenumberField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phonenumber_fieldActionPerformed(evt);
+                phonenumberFieldActionPerformed(evt);
             }
         });
 
-        address_field.setBackground(new java.awt.Color(245, 245, 245));
-        address_field.addActionListener(new java.awt.event.ActionListener() {
+        addressField.setBackground(new java.awt.Color(245, 245, 245));
+        addressField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                address_fieldActionPerformed(evt);
+                addressFieldActionPerformed(evt);
             }
         });
 
@@ -165,12 +165,12 @@ public class signup extends javax.swing.JFrame {
                         .addComponent(phonenumber_Label)))
                 .addGap(64, 64, 64)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(phonenumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(surname_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(308, Short.MAX_VALUE)
@@ -187,25 +187,25 @@ public class signup extends javax.swing.JFrame {
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(username_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(name_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(name_Label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(surname_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(surname_Label))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(password_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(password_Label))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(phonenumber_field, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(address_Label)
@@ -292,71 +292,84 @@ public class signup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        // TODO add your handling code here:
-        String userName = username_field.getText();
-        String name = name_field.getText();
-        String surname = surname_field.getText();
-        String password = password_field.getText();
-        String address = address_field.getText();
-        String phoneNumber = phonenumber_field.getText();
+        String userName = usernameField.getText();
+        String name = nameField.getText();
+        String surname = surnameField.getText();
+        String password = passwordField.getText();
+        String address = addressField.getText();
+        String phoneNumber = phonenumberField.getText();
+        
+        if(userName.isBlank() || name.isBlank() || surname.isBlank() || password.isBlank() || address.isBlank() || phoneNumber.isBlank()){
+            JOptionPane.showMessageDialog(this, "Please enter all required values.");
+        }
+        else{
         try {
             Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-            System.out.println("con"+ conn);
-            // SQL sorgusunu burada oluştur
-            String sql = "INSERT INTO users (name, surname, password, address, telno, username) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement preparedStmt = conn.prepareStatement(sql);
-            
-            // Değerleri set et
-            preparedStmt.setString(1, name);
-            preparedStmt.setString(2, surname);
-            preparedStmt.setString(3, password);
-            preparedStmt.setString(4, address);
-            preparedStmt.setString(5, phoneNumber);
-            preparedStmt.setString(6, userName);
-           
-            
-            
-            // Sorguyu çalıştır
-            preparedStmt.executeUpdate();
-            
-            JOptionPane.showMessageDialog(null, "Ekleme işlemi başarılı oldu.");
-        } catch (SQLException e) {
-            Logger.getLogger(signup.class.getName()).log(Level.SEVERE, null, e);
-        }
 
-        
+            String checkQuery = "SELECT COUNT(*) FROM users WHERE username = ?";
+            PreparedStatement checkStatement = conn.prepareStatement(checkQuery);
+            checkStatement.setString(1, userName);
+
+            ResultSet resultSet = checkStatement.executeQuery();
+            resultSet.next();
+            int count = resultSet.getInt(1);
+
+            if(count == 0){
+                String insertQuery = "INSERT INTO users (name, surname, password, address, telno, username) VALUES (?, ?, ?, ?, ?, ?)";
+                PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
+
+                insertStatement.setString(1, name);
+                insertStatement.setString(2, surname);
+                insertStatement.setString(3, password);
+                insertStatement.setString(4, address);
+                insertStatement.setString(5, phoneNumber);
+                insertStatement.setString(6, userName);
+
+                insertStatement.executeUpdate();
+            }
+            else{
+                usernameField.setText("");
+                JOptionPane.showMessageDialog(null, "This username already exist.");
+            }
+            JOptionPane.showMessageDialog(null, "Successful Login.");
+            } catch (SQLException ex) {
+            Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.EventQueue.invokeLater(() -> {
+                new Login().setVisible(true);
+            });
+        }
     }//GEN-LAST:event_signup_btnActionPerformed
 
-    private void surname_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surname_fieldActionPerformed
+    private void surnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_surname_fieldActionPerformed
+    }//GEN-LAST:event_surnameFieldActionPerformed
 
-    private void username_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_username_fieldActionPerformed
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_username_fieldActionPerformed
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     private void password_field4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_field4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_password_field4ActionPerformed
 
-    private void name_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_name_fieldActionPerformed
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_name_fieldActionPerformed
+    }//GEN-LAST:event_nameFieldActionPerformed
 
-    private void password_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_password_fieldActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_password_fieldActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void phonenumber_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumber_fieldActionPerformed
+    private void phonenumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumberFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_phonenumber_fieldActionPerformed
+    }//GEN-LAST:event_phonenumberFieldActionPerformed
 
-    private void address_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_address_fieldActionPerformed
+    private void addressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_address_fieldActionPerformed
+    }//GEN-LAST:event_addressFieldActionPerformed
 
     private void jButton1close_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1close_btnActionPerformed
-
         dispose();
         System.exit(0);
     }//GEN-LAST:event_jButton1close_btnActionPerformed
@@ -378,27 +391,28 @@ public class signup extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(signup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(SignUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new signup().setVisible(true);
+                new SignUp().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPasswordField addressField;
     private javax.swing.JLabel address_Label;
-    private javax.swing.JPasswordField address_field;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
@@ -406,17 +420,17 @@ public class signup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPasswordField nameField;
     private javax.swing.JLabel name_Label;
-    private javax.swing.JPasswordField name_field;
+    private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel password_Label;
-    private javax.swing.JPasswordField password_field;
     private javax.swing.JPasswordField password_field4;
+    private javax.swing.JPasswordField phonenumberField;
     private javax.swing.JLabel phonenumber_Label;
-    private javax.swing.JPasswordField phonenumber_field;
     private javax.swing.JButton signup_btn;
+    private javax.swing.JPasswordField surnameField;
     private javax.swing.JLabel surname_Label;
-    private javax.swing.JPasswordField surname_field;
+    private javax.swing.JPasswordField usernameField;
     private javax.swing.JLabel username_Label;
-    private javax.swing.JPasswordField username_field;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,18 +4,37 @@
  */
 package petshop;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSI-NB
  */
-public class my_ads extends javax.swing.JFrame {
-
+public class MyAds extends javax.swing.JFrame {
+    
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    Connection conn = null;
     /**
      * Creates new form my_ads
+     * @param username
      */
-    public my_ads() {
+    public MyAds(String username) throws SQLException {
+        MyAds.username = username;
         initComponents();
+        displayMyAds();
     }
+    
+    static String username;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,7 +66,7 @@ public class my_ads extends javax.swing.JFrame {
         delete_btn = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ads_Table = new javax.swing.JTable();
+        myAdsTable = new javax.swing.JTable();
         username_Label = new javax.swing.JLabel();
         username_Label1 = new javax.swing.JLabel();
         username_Label2 = new javax.swing.JLabel();
@@ -214,9 +233,9 @@ public class my_ads extends javax.swing.JFrame {
             }
         });
 
-        ads_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ads_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        ads_Table.setModel(new javax.swing.table.DefaultTableModel(
+        myAdsTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        myAdsTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        myAdsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -227,14 +246,14 @@ public class my_ads extends javax.swing.JFrame {
                 "Type", "Age", "Gender", "Address", "Description"
             }
         ));
-        ads_Table.setRowHeight(30);
-        ads_Table.setRowMargin(2);
-        ads_Table.addMouseListener(new java.awt.event.MouseAdapter() {
+        myAdsTable.setRowHeight(30);
+        myAdsTable.setRowMargin(2);
+        myAdsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ads_TableMouseClicked(evt);
+                myAdsTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(ads_Table);
+        jScrollPane1.setViewportView(myAdsTable);
 
         username_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         username_Label.setText("Age");
@@ -367,10 +386,10 @@ public class my_ads extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_btnActionPerformed
 
-    private void ads_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ads_TableMouseClicked
+    private void myAdsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myAdsTableMouseClicked
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ads_TableMouseClicked
+    }//GEN-LAST:event_myAdsTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -389,27 +408,29 @@ public class my_ads extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(my_ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyAds.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(my_ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyAds.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(my_ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyAds.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(my_ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MyAds.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new my_ads().setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new MyAds(username).setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address_field;
-    private javax.swing.JTable ads_Table;
     private javax.swing.JTextField age_field;
     private javax.swing.JButton cikis_btn3;
     private javax.swing.JButton delete_btn;
@@ -428,6 +449,7 @@ public class my_ads extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
+    private javax.swing.JTable myAdsTable;
     private javax.swing.JTextField sex_field;
     private javax.swing.JTextField type_field;
     private javax.swing.JButton urun_btn3;
@@ -437,4 +459,43 @@ public class my_ads extends javax.swing.JFrame {
     private javax.swing.JLabel username_Label3;
     private javax.swing.JLabel username_Label4;
     // End of variables declaration//GEN-END:variables
+
+    private void displayMyAds() throws SQLException {
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        String selectQuery = "Select * from ad where ad.username = ?";
+        PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+        
+        ResultSet resultSet = selectStatement.executeQuery(selectQuery);
+        
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        myAdsTable.setModel(tableModel);
+        
+        selectStatement.close();
+        resultSet.close();
+      
+
+
+    }
 }

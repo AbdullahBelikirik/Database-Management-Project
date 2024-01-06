@@ -4,16 +4,27 @@
  */
 package petshop;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSI-NB
  */
-public class ads extends javax.swing.JFrame {
-
+public class Ads extends javax.swing.JFrame {
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    Connection conn = null;
     /**
      * Creates new form ads
      */
-    public ads() {
+    public Ads() {
         initComponents();
     }
 
@@ -27,7 +38,7 @@ public class ads extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        ads_Table = new javax.swing.JTable();
+        adTable = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
         basvur_btn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -47,9 +58,9 @@ public class ads extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ads_Table.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        ads_Table.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        ads_Table.setModel(new javax.swing.table.DefaultTableModel(
+        adTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        adTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        adTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -60,14 +71,14 @@ public class ads extends javax.swing.JFrame {
                 "Type", "Age", "Gender", "Address", "Description"
             }
         ));
-        ads_Table.setRowHeight(30);
-        ads_Table.setRowMargin(2);
-        ads_Table.addMouseListener(new java.awt.event.MouseAdapter() {
+        adTable.setRowHeight(30);
+        adTable.setRowMargin(2);
+        adTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ads_TableMouseClicked(evt);
+                adTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(ads_Table);
+        jScrollPane1.setViewportView(adTable);
 
         jLabel15.setFont(new java.awt.Font("Imprint MT Shadow", 1, 25)); // NOI18N
         jLabel15.setText("ILANLAR");
@@ -251,10 +262,10 @@ public class ads extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ads_TableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ads_TableMouseClicked
+    private void adTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adTableMouseClicked
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_ads_TableMouseClicked
+    }//GEN-LAST:event_adTableMouseClicked
 
     private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
 
@@ -303,26 +314,63 @@ public class ads extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ads.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ads().setVisible(true);
+                new Ads().setVisible(true);
             }
         });
     }
+    
+    void displayAds() throws SQLException{
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        Statement selectStatement = conn.createStatement();
+        //Bu satırdaki query düzenlenmelidir.
+        String SelectQuery = "Select   from ad";
+        ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
+        
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        adTable.setModel(tableModel);
+        
+        selectStatement.close();
+        resultSet.close();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable ads_Table;
+    private javax.swing.JTable adTable;
     private javax.swing.JButton basvur_btn;
     private javax.swing.JButton cikis_btn3;
     private javax.swing.JButton fatura_btn3;
