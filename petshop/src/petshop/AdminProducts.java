@@ -546,7 +546,7 @@ public class AdminProducts extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        String SelectQuery = "Select count,name,price from products";
+        String SelectQuery = "SELECT name,count,price FROM get_all_products()";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();

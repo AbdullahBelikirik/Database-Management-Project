@@ -4,6 +4,7 @@
  */
 package petshop;
 
+import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -15,8 +16,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Types;
 
 /**
  *
@@ -37,7 +40,7 @@ public class Profile extends javax.swing.JFrame {
         Profile.username = username;
         initComponents();
         displayProfile();
-        displayMyApplications();
+      //  displayMyApplications();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -425,6 +428,12 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_cikis_btn3logout_btn
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException ex) {
+            Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {
             String updateQuery = "Update users Set username = ? , name = ?, surname = ?, password = ?, address = ?, telno = ? where name = ?";
             PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
@@ -440,7 +449,7 @@ public class Profile extends javax.swing.JFrame {
                 updateStatement.setString(5, addressField.getText());
                 updateStatement.setString(6, phonenumberField.getText());
                 updateStatement.setString(7, Profile.username);
-                
+                updateStatement.executeUpdate();
                 Profile.username = usernameField.getText();
                 JOptionPane.showMessageDialog(this, "You updated your profile");
                 updateStatement.close();
@@ -556,13 +565,19 @@ public class Profile extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void displayProfile() throws SQLException { 
-        conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-        String selectQuery = "SELECT * FROM users WHERE userName = ?";
-        PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
-        selectStatement.setString(1, Profile.username);
+        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+    // Call the PostgreSQL function to get user information by name
+      String getUserFunction = "{call get_user_by_name(?)}";
+    try (CallableStatement getUserStatement = conn.prepareCall(getUserFunction)) {
+      //  getUserStatement.registerOutParameter(1, Types.OTHER);
+        getUserStatement.setString(1, Profile.username);
+        getUserStatement.execute();
 
-        ResultSet resultSet = selectStatement.executeQuery();
-        if (resultSet.next()) {
+        // Get the result set from the function call
+        ResultSet resultSet = getUserStatement.getResultSet();
+
+        if (resultSet != null && resultSet.next()) {
+            // Update the UI with the retrieved user information
             nameField.setText(resultSet.getString("name"));
             surnameField.setText(resultSet.getString("surname"));
             passwordField.setText(resultSet.getString("password"));
@@ -572,6 +587,12 @@ public class Profile extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "User not found.");
         }
+    }
+} catch (SQLException ex) {
+    Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+    JOptionPane.showMessageDialog(this, ex);
+}
+
     }
 
     private void displayMyApplications() throws SQLException {

@@ -432,7 +432,7 @@ public class Ads extends javax.swing.JFrame {
         
         Statement selectStatement = conn.createStatement();
         
-        String SelectQuery = "Select * from ad";
+        String SelectQuery = "Select type,age,sex,address,description from ad";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();
