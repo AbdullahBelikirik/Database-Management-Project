@@ -361,6 +361,9 @@
               <Image iconType="3" name="/img/customer.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="urun_btn3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cikis_btn3">
           <Properties>

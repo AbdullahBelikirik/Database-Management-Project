@@ -152,6 +152,11 @@ public class MyAds extends javax.swing.JFrame {
 
         urun_btn3.setBackground(new java.awt.Color(255, 204, 204));
         urun_btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/customer.png"))); // NOI18N
+        urun_btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                urun_btn3ActionPerformed(evt);
+            }
+        });
 
         cikis_btn3.setBackground(new java.awt.Color(255, 204, 204));
         cikis_btn3.addActionListener(new java.awt.event.ActionListener() {
@@ -486,6 +491,15 @@ public class MyAds extends javax.swing.JFrame {
     private void type_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_type_fieldActionPerformed
+
+    private void urun_btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_urun_btn3ActionPerformed
+        try {
+            // TODO add your handling code here:
+            new Profile(MyAds.username).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_urun_btn3ActionPerformed
 
     /**
      * @param args the command line arguments

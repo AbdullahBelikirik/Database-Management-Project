@@ -35,10 +35,27 @@ public class Profile extends javax.swing.JFrame {
         Profile.username = username;
         initComponents();
         displayMyAds();
-    }
-    
-    static String username;
+        conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        String selectQuery = "SELECT * FROM users WHERE userName = ?";
+            PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+                selectStatement.setString(1, Profile.username);
 
+                ResultSet resultSet = selectStatement.executeQuery();
+                if (resultSet.next()) {
+                    nameField.setText(resultSet.getString("name"));
+                    surnameField.setText(resultSet.getString("surname"));
+                    passwordField.setText(resultSet.getString("password"));
+                    adressField.setText(resultSet.getString("address"));
+                    phonenumberField.setText(resultSet.getString("telNo"));
+                    usernameField.setText(resultSet.getString("userName"));
+                } else {
+                    // Kullanıcı bulunamadı
+                    JOptionPane.showMessageDialog(this, "User not found.");
+                }
+    
+    
+    
+    }static String username;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,14 +84,14 @@ public class Profile extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         myAdsTable = new javax.swing.JTable();
         surname_Label = new javax.swing.JLabel();
-        passwordField = new javax.swing.JPasswordField();
+        surnameField = new javax.swing.JPasswordField();
         phonenumber_Label = new javax.swing.JLabel();
         address_Label = new javax.swing.JLabel();
+        adressField = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
         phonenumberField = new javax.swing.JTextField();
-        surnameField = new javax.swing.JTextField();
-        addressField = new javax.swing.JTextField();
-        usernameField2 = new javax.swing.JTextField();
-        usernameField3 = new javax.swing.JTextField();
+        usernameField = new javax.swing.JTextField();
         name_Label = new javax.swing.JLabel();
         username_Label = new javax.swing.JLabel();
         password_Label = new javax.swing.JLabel();
@@ -256,10 +273,10 @@ public class Profile extends javax.swing.JFrame {
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         surname_Label.setText("Surname");
 
-        passwordField.setBackground(new java.awt.Color(245, 245, 245));
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
+        surnameField.setBackground(new java.awt.Color(245, 245, 245));
+        surnameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
+                surnameFieldActionPerformed(evt);
             }
         });
 
@@ -269,33 +286,33 @@ public class Profile extends javax.swing.JFrame {
         address_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         address_Label.setText("Address");
 
+        adressField.setBackground(new java.awt.Color(245, 245, 245));
+
+        nameField.setBackground(new java.awt.Color(245, 245, 245));
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
+
+        passwordField.setBackground(new java.awt.Color(245, 245, 245));
+        passwordField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordFieldActionPerformed(evt);
+            }
+        });
+
         phonenumberField.setBackground(new java.awt.Color(245, 245, 245));
-
-        surnameField.setBackground(new java.awt.Color(245, 245, 245));
-        surnameField.addActionListener(new java.awt.event.ActionListener() {
+        phonenumberField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                surnameFieldActionPerformed(evt);
+                phonenumberFieldActionPerformed(evt);
             }
         });
 
-        addressField.setBackground(new java.awt.Color(245, 245, 245));
-        addressField.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.setBackground(new java.awt.Color(245, 245, 245));
+        usernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressFieldActionPerformed(evt);
-            }
-        });
-
-        usernameField2.setBackground(new java.awt.Color(245, 245, 245));
-        usernameField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameField2ActionPerformed(evt);
-            }
-        });
-
-        usernameField3.setBackground(new java.awt.Color(245, 245, 245));
-        usernameField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameField3ActionPerformed(evt);
+                usernameFieldActionPerformed(evt);
             }
         });
 
@@ -326,27 +343,27 @@ public class Profile extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(username_Label)
                             .addGap(70, 70, 70)
-                            .addComponent(usernameField3, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(name_Label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(surname_Label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(password_Label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(address_Label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(phonenumber_Label)
                         .addGap(18, 18, 18)
-                        .addComponent(usernameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -366,32 +383,32 @@ public class Profile extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 121, Short.MAX_VALUE))
+                        .addGap(0, 136, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(username_Label)
-                            .addComponent(usernameField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(name_Label)
-                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(surname_Label)
-                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(password_Label)
-                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(address_Label)
-                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonenumber_Label)
-                            .addComponent(usernameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                         .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
         );
@@ -425,7 +442,7 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_cikis_btn3logout_btn
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
-
+        
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_btnActionPerformed
 
@@ -438,25 +455,25 @@ public class Profile extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_btn1ActionPerformed
 
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
     private void surnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_surnameFieldActionPerformed
 
-    private void addressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressFieldActionPerformed
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressFieldActionPerformed
+    }//GEN-LAST:event_nameFieldActionPerformed
 
-    private void usernameField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField2ActionPerformed
+    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameField2ActionPerformed
+    }//GEN-LAST:event_passwordFieldActionPerformed
 
-    private void usernameField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField3ActionPerformed
+    private void phonenumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumberFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_usernameField3ActionPerformed
+    }//GEN-LAST:event_phonenumberFieldActionPerformed
+
+    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usernameFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -499,8 +516,8 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressField;
     private javax.swing.JLabel address_Label;
+    private javax.swing.JTextField adressField;
     private javax.swing.JButton cikis_btn3;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
@@ -519,16 +536,16 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
     private javax.swing.JTable myAdsTable;
+    private javax.swing.JTextField nameField;
     private javax.swing.JLabel name_Label;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JLabel password_Label;
     private javax.swing.JTextField phonenumberField;
     private javax.swing.JLabel phonenumber_Label;
-    private javax.swing.JTextField surnameField;
+    private javax.swing.JPasswordField surnameField;
     private javax.swing.JLabel surname_Label;
     private javax.swing.JButton urun_btn3;
-    private javax.swing.JTextField usernameField2;
-    private javax.swing.JTextField usernameField3;
+    private javax.swing.JTextField usernameField;
     private javax.swing.JLabel username_Label;
     // End of variables declaration//GEN-END:variables
 

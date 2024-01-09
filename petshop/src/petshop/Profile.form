@@ -59,33 +59,33 @@
                       <Group type="102" attributes="0">
                           <Component id="username_Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                          <Component id="usernameField3" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="usernameField" min="-2" pref="321" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="name_Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="surnameField" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="nameField" min="-2" pref="321" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="surname_Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="passwordField" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="surnameField" min="-2" pref="321" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="password_Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="addressField" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="passwordField" min="-2" pref="321" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="address_Label" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="phonenumberField" min="-2" pref="321" max="-2" attributes="0"/>
+                          <Component id="adressField" min="-2" pref="321" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="phonenumber_Label" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="usernameField2" min="-2" pref="321" max="-2" attributes="0"/>
+                      <Component id="phonenumberField" min="-2" pref="321" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -110,39 +110,39 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="395" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="121" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="136" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="username_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="usernameField3" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="usernameField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="name_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="surnameField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="nameField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="surname_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="passwordField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="surnameField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="password_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="addressField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="passwordField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="address_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="phonenumberField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="adressField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="phonenumber_Label" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="usernameField2" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="phonenumberField" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="149" max="32767" attributes="0"/>
                       <Component id="edit_btn" min="-2" pref="36" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
@@ -428,14 +428,14 @@
         <Property name="text" type="java.lang.String" value="Surname"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JPasswordField" name="passwordField">
+    <Component class="javax.swing.JPasswordField" name="surnameField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f5" green="f5" red="f5" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="surnameFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="phonenumber_Label">
@@ -454,63 +454,63 @@
         <Property name="text" type="java.lang.String" value="Address"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JTextField" name="adressField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f5" green="f5" red="f5" type="rgb"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="nameField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f5" green="f5" red="f5" type="rgb"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nameFieldActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="passwordField">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="f5" green="f5" red="f5" type="rgb"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passwordFieldActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
+      </AuxValues>
+    </Component>
     <Component class="javax.swing.JTextField" name="phonenumberField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f5" green="f5" red="f5" type="rgb"/>
         </Property>
       </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="surnameField">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f5" green="f5" red="f5" type="rgb"/>
-        </Property>
-      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="surnameFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="phonenumberFieldActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="addressField">
+    <Component class="javax.swing.JTextField" name="usernameField">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="f5" green="f5" red="f5" type="rgb"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addressFieldActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="usernameField2">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f5" green="f5" red="f5" type="rgb"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameField2ActionPerformed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JTextField" name="usernameField3">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="f5" green="f5" red="f5" type="rgb"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameField3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameFieldActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="login_page_username_field"/>
