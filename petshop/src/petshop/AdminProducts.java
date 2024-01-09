@@ -363,12 +363,13 @@ public class AdminProducts extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         try {
-            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from products where `name` = ?");
+            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from products where name = ?");
             
             int selectedRowIndex = productTable.getSelectedRow();
             if (selectedRowIndex != -1) {
-                String productName = (String) productTable.getValueAt(selectedRowIndex, 0).toString();
+                String productName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
                 deleteStatement.setString(1, productName);
+                System.out.println(productName);
                 deleteStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Product deleted.");
                 displayProducts();
@@ -383,20 +384,24 @@ public class AdminProducts extends javax.swing.JFrame {
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         try {
-            String updateQuery = "Update products Set `name` = ? , `amount` = ?, `price` = ? where `name` = ?";
+            String updateQuery = "Update products Set name = ? , count = ?, price = ? where name = ?";
             PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
 
             int selectedRowIndex = productTable.getSelectedRow();
             if (selectedRowIndex != -1) {
-                String oldProductName = (String) productTable.getValueAt(selectedRowIndex, 0).toString();
+                String oldProductName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
                 
                 if (nameField.getText().isEmpty() || priceField.getText().isEmpty() || amountField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You have to choose a product to update.");
                 
                 } else {
+                    String counttxt = amountField.getText();
+                    int count = Integer.parseInt(counttxt);
+                    String pricetxt = priceField.getText();
+                    int price = Integer.parseInt(pricetxt);
                     updateStatement.setString(1, nameField.getText());
-                    updateStatement.setString(2, amountField.getText());
-                    updateStatement.setString(3, priceField.getText());
+                    updateStatement.setInt(2, count);
+                    updateStatement.setInt(3, price);
                     updateStatement.setString(4, oldProductName);
                     updateStatement.executeUpdate();
                     
@@ -415,9 +420,10 @@ public class AdminProducts extends javax.swing.JFrame {
 
     private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
         int selectedRowIndex = productTable.getSelectedRow();
-        nameField.setText((String) productTable.getValueAt(selectedRowIndex, 0).toString());
-        amountField.setText((String) productTable.getValueAt(selectedRowIndex, 1).toString());
+        nameField.setText((String) productTable.getValueAt(selectedRowIndex, 1).toString());
+        amountField.setText((String) productTable.getValueAt(selectedRowIndex, 0).toString());
         priceField.setText((String) productTable.getValueAt(selectedRowIndex, 2).toString());
+        
     }//GEN-LAST:event_productTableMouseClicked
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
@@ -425,11 +431,15 @@ public class AdminProducts extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter all required values.");
         } else {
             try {
-                String insertQuery = "insert into Products(`name`, `amount`, `price`) VALUES(?,?,?)";
+                String insertQuery = "insert into Products(name, count, price) VALUES(?,?,?)";
                 PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
+                String counttxt = amountField.getText();
+                int count = Integer.parseInt(counttxt);
+                String pricetxt = priceField.getText();
+                int price = Integer.parseInt(pricetxt);
                 insertStatement.setString(1, nameField.getText());
-                insertStatement.setString(2, amountField.getText());
-                insertStatement.setString(3, priceField.getText());
+                insertStatement.setInt(2, count);
+                insertStatement.setInt(3, price);
                 insertStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Hayvan Eklendi");
                 displayProducts();

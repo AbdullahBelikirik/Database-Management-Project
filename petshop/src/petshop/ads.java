@@ -10,6 +10,8 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,8 +26,9 @@ public class Ads extends javax.swing.JFrame {
     /**
      * Creates new form ads
      */
-    public Ads() {
+    public Ads() throws SQLException {
         initComponents();
+        displayAds();
     }
 
     /**
@@ -324,11 +327,15 @@ public class Ads extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Ads().setVisible(true);
+                try {
+                    new Ads().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Ads.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -342,7 +349,7 @@ public class Ads extends javax.swing.JFrame {
         
         Statement selectStatement = conn.createStatement();
         //Bu satırdaki query düzenlenmelidir.
-        String SelectQuery = "Select   from ad";
+        String SelectQuery = "Select * from ad";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();

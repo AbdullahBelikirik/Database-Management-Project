@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-    private final String dbUrl = "jdbc:postgresql://localhost/postgres";
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
     private final String adminUsername = "admin";
@@ -247,15 +247,14 @@ public class Login extends javax.swing.JFrame {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 });
-             }
-             
+             }else{
              try {
                  conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
              } catch (SQLException e) {
                  System.out.println(e.getMessage());
              }
-             selectQuery = "select * from users where `username` = ? and `password` = ?";
-             selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             selectQuery = "select * from users where username = ? and password = ?";
+             selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
              selectStatement.setString(1, username);
              selectStatement.setString(2, password);
              resultSet = selectStatement.executeQuery();
@@ -279,7 +278,7 @@ public class Login extends javax.swing.JFrame {
                 password_field.setText("");
             }
              
-             
+             }
          } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }

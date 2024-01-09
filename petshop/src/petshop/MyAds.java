@@ -10,8 +10,11 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -45,6 +48,7 @@ public class MyAds extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        edit_btn1 = new javax.swing.JButton();
         type_field = new javax.swing.JTextField();
         description_field = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
@@ -73,10 +77,27 @@ public class MyAds extends javax.swing.JFrame {
         username_Label3 = new javax.swing.JLabel();
         username_Label4 = new javax.swing.JLabel();
         address_field = new javax.swing.JTextField();
+        add_button = new javax.swing.JButton();
+
+        edit_btn1.setBackground(new java.awt.Color(255, 204, 204));
+        edit_btn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        edit_btn1.setText("EDIT");
+        edit_btn1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        edit_btn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        edit_btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                edit_btn1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         type_field.setBackground(new java.awt.Color(245, 245, 245));
+        type_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                type_fieldActionPerformed(evt);
+            }
+        });
 
         description_field.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -170,7 +191,7 @@ public class MyAds extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(urun_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
@@ -272,6 +293,17 @@ public class MyAds extends javax.swing.JFrame {
 
         address_field.setBackground(new java.awt.Color(245, 245, 245));
 
+        add_button.setBackground(new java.awt.Color(255, 204, 204));
+        add_button.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        add_button.setText("ADD");
+        add_button.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        add_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        add_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                add_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,6 +313,8 @@ public class MyAds extends javax.swing.JFrame {
                 .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
                 .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(93, 93, 93)
+                .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(97, 97, 97)
@@ -335,7 +369,8 @@ public class MyAds extends javax.swing.JFrame {
                         .addGap(161, 161, 161)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -391,6 +426,67 @@ public class MyAds extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_myAdsTableMouseClicked
 
+    private void edit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_edit_btn1ActionPerformed
+
+    private void add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_buttonActionPerformed
+        // TODO add your handling code here:
+        try{
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        Date currentDate = new Date();
+        DateFormat defaultDateFormat = DateFormat.getDateInstance();
+        if (type_field.getText().isEmpty() || age_field.getText().isEmpty() || sex_field.getText().isEmpty() || address_field.getText().isEmpty() || description_field.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter all required values.");
+        } else {
+            try {
+        
+                // Existing code...
+
+                String selectQuery = "SELECT id FROM users WHERE username = ?";
+                PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery);
+                selectStatement.setString(1, MyAds.username);
+                ResultSet resultSet = selectStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    int userId = resultSet.getInt("id");
+                    System.out.println(userId);
+
+                    String insertQuery = "INSERT INTO ad (address, description, age, sex, type, date, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
+                    String ageText = age_field.getText();
+                    int age = Integer.parseInt(ageText);
+                    insertStatement.setString(1, address_field.getText());
+                    insertStatement.setString(2, description_field.getText());
+                    insertStatement.setInt(3, age);
+                    insertStatement.setString(4, sex_field.getText());
+                    insertStatement.setString(5, type_field.getText());
+                    insertStatement.setDate(6, new java.sql.Date(currentDate.getTime()));
+                    insertStatement.setInt(7, userId);
+
+                    insertStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Hayvan Eklendi");
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not found.");
+                }
+
+// Existing code...
+
+              //  displayMyAds();
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }
+    }//GEN-LAST:event_add_buttonActionPerformed
+
+    private void type_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_type_fieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -430,12 +526,14 @@ public class MyAds extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add_button;
     private javax.swing.JTextField address_field;
     private javax.swing.JTextField age_field;
     private javax.swing.JButton cikis_btn3;
     private javax.swing.JButton delete_btn;
     private javax.swing.JTextField description_field;
     private javax.swing.JButton edit_btn;
+    private javax.swing.JButton edit_btn1;
     private javax.swing.JButton fatura_btn3;
     private javax.swing.JButton hayvan_btn3;
     private javax.swing.JLabel jLabel17;
@@ -460,42 +558,64 @@ public class MyAds extends javax.swing.JFrame {
     private javax.swing.JLabel username_Label4;
     // End of variables declaration//GEN-END:variables
 
-    private void displayMyAds() throws SQLException {
+    private void displayMyAds() throws SQLException { 
         try {
             conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        
-        String selectQuery = "Select * from ad where ad.username = ?";
-        PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-        
-        ResultSet resultSet = selectStatement.executeQuery(selectQuery);
-        
-        ResultSetMetaData metaData = resultSet.getMetaData();
-        int columnCount = metaData.getColumnCount();
-        String[] columnNames = new String[columnCount];
-        for (int i = 1; i <= columnCount; i++) {
-            columnNames[i - 1] = metaData.getColumnName(i);
-        }
-        
-        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-        Object[] row ;
-        
-        while (resultSet.next()) {
-            row = new Object[columnCount];
-            for (int i = 1; i <= columnCount; i++) {
-                row[i - 1] = resultSet.getObject(i);
+
+            // Select user ID using PreparedStatement and set username as a parameter
+            String selectIDQuery = "SELECT id FROM users WHERE username = ?";
+            PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
+            selectIDStatement.setString(1, MyAds.username);
+            ResultSet idset = selectIDStatement.executeQuery();
+
+            // Check if the result set has any rows
+            if (idset.next()) {
+                int userId = idset.getInt("id");
+
+                // Use the user ID in the ad selection query
+                String selectQuery = "SELECT * FROM ad WHERE userid = ?";
+                PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+                selectStatement.setInt(1, userId);
+
+                ResultSet resultSet = selectStatement.executeQuery();
+
+                ResultSetMetaData metaData = resultSet.getMetaData();
+                int columnCount = metaData.getColumnCount();
+                String[] columnNames = new String[columnCount];
+
+                for (int i = 1; i <= columnCount; i++) {
+                    columnNames[i - 1] = metaData.getColumnName(i);
+                }
+
+                DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+                Object[] row;
+
+                while (resultSet.next()) {
+                    row = new Object[columnCount];
+                    for (int i = 1; i <= columnCount; i++) {
+                        row[i - 1] = resultSet.getObject(i);
+                    }
+                    tableModel.addRow(row);
+                }
+
+                myAdsTable.setModel(tableModel);
+
+                // Close resources in the finally block
+                resultSet.close();
+                selectStatement.close();
+            } else {
+                System.out.println("User not found."); // Handle this case appropriately
             }
-            tableModel.addRow(row);
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Handle the exception appropriately in your application
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle the exception appropriately in your application
+            }
         }
-        
-        myAdsTable.setModel(tableModel);
-        
-        selectStatement.close();
-        resultSet.close();
-      
-
-
     }
 }
