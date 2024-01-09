@@ -6,12 +6,16 @@ package petshop;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,6 +33,8 @@ public class Ads extends javax.swing.JFrame {
     public Ads() throws SQLException {
         initComponents();
         displayAds();
+        fillComboBoxWithData();
+        
     }
 
     /**
@@ -231,8 +237,6 @@ public class Ads extends javax.swing.JFrame {
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         surname_Label.setText("Hayvan Türü");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         basvur_btn1.setBackground(new java.awt.Color(255, 204, 204));
         basvur_btn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
         basvur_btn1.setText("BASVUR");
@@ -309,8 +313,39 @@ public class Ads extends javax.swing.JFrame {
     }//GEN-LAST:event_adTableMouseClicked
 
     private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
-
-        // TODO add your handling code here:
+        try {
+            String selectedType = (String) jComboBox1.getSelectedItem();
+            PreparedStatement preparedStatement = null;
+            String selectQuery = "SELECT * FROM ad WHERE type = ?";
+            preparedStatement = conn.prepareStatement(selectQuery);
+            preparedStatement.setString(1, selectedType);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        adTable.setModel(tableModel);
+        
+        preparedStatement.close();
+        resultSet.close();
+            // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(Ads.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_basvur_btnActionPerformed
 
     private void hayvan_btn3pets_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hayvan_btn3pets_btn
@@ -423,7 +458,32 @@ public class Ads extends javax.swing.JFrame {
         selectStatement.close();
         resultSet.close();
     }
+void fillComboBoxWithData() {
+        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+            String selectQuery = "SELECT DISTINCT type FROM ad";
+            try (PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery);
+) {
+                ResultSet resultSet = selectStatement.executeQuery();
+                
+                // Benzersiz tipleri bir Set'e ekleyelim
+                Set<String> uniqueTypes = new HashSet<>();
+                while (resultSet.next()) {
+                    uniqueTypes.add(resultSet.getString("type"));
+                }
 
+                // Set'teki tipleri JComboBox'a ekleyelim
+                for (String type : uniqueTypes) {
+                    jComboBox1.addItem(type);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error fetching data from the database.");
+        }
+        
+        
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable adTable;
     private javax.swing.JButton basvur_btn;
