@@ -369,6 +369,12 @@ public class Ads extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
          
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -390,7 +396,7 @@ public class Ads extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        //Bu satırdaki query düzenlenmelidir.
+        
         String SelectQuery = "Select * from ad";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         

@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -27,6 +28,7 @@ public class Profile extends javax.swing.JFrame {
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
     Connection conn = null;
+    static String username;
     /**
      * Creates new form my_ads
      * @param username
@@ -34,28 +36,9 @@ public class Profile extends javax.swing.JFrame {
     public Profile(String username) throws SQLException {
         Profile.username = username;
         initComponents();
-        displayMyAds();
-        conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-        String selectQuery = "SELECT * FROM users WHERE userName = ?";
-            PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
-                selectStatement.setString(1, Profile.username);
-
-                ResultSet resultSet = selectStatement.executeQuery();
-                if (resultSet.next()) {
-                    nameField.setText(resultSet.getString("name"));
-                    surnameField.setText(resultSet.getString("surname"));
-                    passwordField.setText(resultSet.getString("password"));
-                    adressField.setText(resultSet.getString("address"));
-                    phonenumberField.setText(resultSet.getString("telNo"));
-                    usernameField.setText(resultSet.getString("userName"));
-                } else {
-                    // Kullanıcı bulunamadı
-                    JOptionPane.showMessageDialog(this, "User not found.");
-                }
-    
-    
-    
-    }static String username;
+        displayProfile();
+        displayMyApplications();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,12 +65,12 @@ public class Profile extends javax.swing.JFrame {
         cikis_btn3 = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        myAdsTable = new javax.swing.JTable();
+        applicationsTable = new javax.swing.JTable();
         surname_Label = new javax.swing.JLabel();
         surnameField = new javax.swing.JPasswordField();
         phonenumber_Label = new javax.swing.JLabel();
         address_Label = new javax.swing.JLabel();
-        adressField = new javax.swing.JTextField();
+        addressField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JTextField();
         phonenumberField = new javax.swing.JTextField();
@@ -248,9 +231,9 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
-        myAdsTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        myAdsTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        myAdsTable.setModel(new javax.swing.table.DefaultTableModel(
+        applicationsTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        applicationsTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        applicationsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -261,14 +244,14 @@ public class Profile extends javax.swing.JFrame {
                 "Type", "Age", "Gender", "Address", "Description"
             }
         ));
-        myAdsTable.setRowHeight(30);
-        myAdsTable.setRowMargin(2);
-        myAdsTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        applicationsTable.setRowHeight(30);
+        applicationsTable.setRowMargin(2);
+        applicationsTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                myAdsTableMouseClicked(evt);
+                applicationsTableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(myAdsTable);
+        jScrollPane1.setViewportView(applicationsTable);
 
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         surname_Label.setText("Surname");
@@ -286,7 +269,7 @@ public class Profile extends javax.swing.JFrame {
         address_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         address_Label.setText("Address");
 
-        adressField.setBackground(new java.awt.Color(245, 245, 245));
+        addressField.setBackground(new java.awt.Color(245, 245, 245));
 
         nameField.setBackground(new java.awt.Color(245, 245, 245));
         nameField.addActionListener(new java.awt.event.ActionListener() {
@@ -359,7 +342,7 @@ public class Profile extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(address_Label)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(phonenumber_Label)
                         .addGap(18, 18, 18)
@@ -403,7 +386,7 @@ public class Profile extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(address_Label)
-                            .addComponent(adressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(phonenumber_Label)
@@ -442,14 +425,37 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_cikis_btn3logout_btn
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
-        
+        try {
+            String updateQuery = "Update users Set username = ? , name = ?, surname = ?, password = ?, address = ?, telno = ? where name = ?";
+            PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
+
+            if (nameField.getText().isEmpty() || usernameField.getText().isEmpty() || surnameField.getText().isEmpty() || passwordField.getText().isEmpty() || addressField.getText().isEmpty() || phonenumberField.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Please enter all required fields.");
+
+            } else {
+                updateStatement.setString(1, usernameField.getText());
+                updateStatement.setString(2, nameField.getText());
+                updateStatement.setString(3, surnameField.getText());
+                updateStatement.setString(4, passwordField.getText());
+                updateStatement.setString(5, addressField.getText());
+                updateStatement.setString(6, phonenumberField.getText());
+                updateStatement.setString(7, Profile.username);
+                
+                Profile.username = usernameField.getText();
+                JOptionPane.showMessageDialog(this, "You updated your profile");
+                updateStatement.close();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_edit_btnActionPerformed
 
-    private void myAdsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myAdsTableMouseClicked
+    private void applicationsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_applicationsTableMouseClicked
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_myAdsTableMouseClicked
+    }//GEN-LAST:event_applicationsTableMouseClicked
 
     private void edit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btn1ActionPerformed
         // TODO add your handling code here:
@@ -516,8 +522,9 @@ public class Profile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressField;
     private javax.swing.JLabel address_Label;
-    private javax.swing.JTextField adressField;
+    private javax.swing.JTable applicationsTable;
     private javax.swing.JButton cikis_btn3;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
@@ -535,7 +542,6 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton kullanici_btn3;
     private javax.swing.JButton musteri_btn3;
-    private javax.swing.JTable myAdsTable;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel name_Label;
     private javax.swing.JTextField passwordField;
@@ -549,64 +555,62 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JLabel username_Label;
     // End of variables declaration//GEN-END:variables
 
-    private void displayMyAds() throws SQLException { 
-        try {
-            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+    private void displayProfile() throws SQLException { 
+        conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        String selectQuery = "SELECT * FROM users WHERE userName = ?";
+        PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+        selectStatement.setString(1, Profile.username);
 
-            // Select user ID using PreparedStatement and set username as a parameter
-            String selectIDQuery = "SELECT id FROM users WHERE username = ?";
-            PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
-            selectIDStatement.setString(1, Profile.username);
-            ResultSet idset = selectIDStatement.executeQuery();
+        ResultSet resultSet = selectStatement.executeQuery();
+        if (resultSet.next()) {
+            nameField.setText(resultSet.getString("name"));
+            surnameField.setText(resultSet.getString("surname"));
+            passwordField.setText(resultSet.getString("password"));
+            addressField.setText(resultSet.getString("address"));
+            phonenumberField.setText(resultSet.getString("telNo"));
+            usernameField.setText(resultSet.getString("userName"));
+        } else {
+            JOptionPane.showMessageDialog(this, "User not found.");
+        }
+    }
 
-            // Check if the result set has any rows
-            if (idset.next()) {
-                int userId = idset.getInt("id");
+    private void displayMyApplications() throws SQLException {
+        
+        String selectIDQuery = "SELECT id FROM users WHERE username = ?";
+        PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
+        selectIDStatement.setString(1, Profile.username);
+        ResultSet idset = selectIDStatement.executeQuery();
+        
+        if (idset.next()) {
+            int userId = idset.getInt("id");
+            
+            String selectQuery = "SELECT adID, referencedID, date FROM users WHERE applicantID = ?";
+            PreparedStatement selectStatement = conn.prepareStatement(selectIDQuery);
+            selectIDStatement.setInt(1, userId);
+            ResultSet resultSet = selectIDStatement.executeQuery();
 
-                // Use the user ID in the ad selection query
-                String selectQuery = "SELECT * FROM ad WHERE userid = ?";
-                PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
-                selectStatement.setInt(1, userId);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+            }
 
-                ResultSet resultSet = selectStatement.executeQuery();
+            DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            Object[] row ;
 
-                ResultSetMetaData metaData = resultSet.getMetaData();
-                int columnCount = metaData.getColumnCount();
-                String[] columnNames = new String[columnCount];
-
+            while (resultSet.next()) {
+                row = new Object[columnCount];
                 for (int i = 1; i <= columnCount; i++) {
-                    columnNames[i - 1] = metaData.getColumnName(i);
+                    row[i - 1] = resultSet.getObject(i);
                 }
-
-                DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
-                Object[] row;
-
-                while (resultSet.next()) {
-                    row = new Object[columnCount];
-                    for (int i = 1; i <= columnCount; i++) {
-                        row[i - 1] = resultSet.getObject(i);
-                    }
-                    tableModel.addRow(row);
-                }
-
-                myAdsTable.setModel(tableModel);
-
-                // Close resources in the finally block
-                resultSet.close();
-                selectStatement.close();
-            } else {
-                System.out.println("User not found."); // Handle this case appropriately
+                tableModel.addRow(row);
             }
-        } catch (SQLException ex) {
-            ex.printStackTrace(); // Handle the exception appropriately in your application
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace(); // Handle the exception appropriately in your application
-            }
+
+            applicationsTable.setModel(tableModel);
+
+            selectStatement.close();
+            resultSet.close();
         }
     }
 }

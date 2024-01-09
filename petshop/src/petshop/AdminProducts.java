@@ -431,22 +431,35 @@ public class AdminProducts extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter all required values.");
         } else {
             try {
-                String insertQuery = "insert into Products(name, count, price) VALUES(?,?,?)";
-                PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
-                String counttxt = amountField.getText();
-                int count = Integer.parseInt(counttxt);
-                String pricetxt = priceField.getText();
-                int price = Integer.parseInt(pricetxt);
-                insertStatement.setString(1, nameField.getText());
-                insertStatement.setInt(2, count);
-                insertStatement.setInt(3, price);
-                insertStatement.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Hayvan Eklendi");
-                displayProducts();
+                String checkQuery = "SELECT COUNT(*) FROM products WHERE name = ?";
+                PreparedStatement checkStatement = conn.prepareStatement(checkQuery);
+                checkStatement.setString(1, nameField.getText());
+                
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int cnt = resultSet.getInt(1);
+                
+                if(cnt == 0){
+                    String insertQuery = "insert into Products(name, count, price) VALUES(?,?,?)";
+                    PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
+                    String countString = amountField.getText();
+                    int count = Integer.parseInt(countString);
+                    String priceString = priceField.getText();
+                    int price = Integer.parseInt(priceString);
+                    insertStatement.setString(1, nameField.getText());
+                    insertStatement.setInt(2, count);
+                    insertStatement.setInt(3, price);
+                    insertStatement.executeUpdate();
+                    JOptionPane.showMessageDialog(this, "Product added.");
+                    displayProducts();
+                }
+                else{
+                    JOptionPane.showMessageDialog(this, "This product already exist.");
+                }
+                
             } catch (SQLException ex) {
                 Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
         }
     }//GEN-LAST:event_addButtonActionPerformed
 

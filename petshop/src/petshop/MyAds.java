@@ -575,18 +575,15 @@ public class MyAds extends javax.swing.JFrame {
     private void displayMyAds() throws SQLException { 
         try {
             conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-
-            // Select user ID using PreparedStatement and set username as a parameter
+            
             String selectIDQuery = "SELECT id FROM users WHERE username = ?";
             PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
             selectIDStatement.setString(1, MyAds.username);
             ResultSet idset = selectIDStatement.executeQuery();
-
-            // Check if the result set has any rows
+            
             if (idset.next()) {
                 int userId = idset.getInt("id");
-
-                // Use the user ID in the ad selection query
+               
                 String selectQuery = "SELECT * FROM ad WHERE userid = ?";
                 PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
                 selectStatement.setInt(1, userId);
@@ -614,22 +611,13 @@ public class MyAds extends javax.swing.JFrame {
 
                 myAdsTable.setModel(tableModel);
 
-                // Close resources in the finally block
                 resultSet.close();
                 selectStatement.close();
             } else {
-                System.out.println("User not found."); // Handle this case appropriately
+                System.out.println("User not found."); 
             }
         } catch (SQLException ex) {
-            ex.printStackTrace(); // Handle the exception appropriately in your application
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace(); // Handle the exception appropriately in your application
-            }
-        }
+            ex.printStackTrace(); 
+        } 
     }
 }
