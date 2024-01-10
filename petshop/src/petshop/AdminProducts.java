@@ -43,19 +43,18 @@ public class AdminProducts extends javax.swing.JFrame {
 
         nameField = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jLabel20 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        products_btn = new javax.swing.JButton();
+        ads_btn = new javax.swing.JButton();
+        users_btn = new javax.swing.JButton();
+        apandor_btn = new javax.swing.JButton();
         jLabel44 = new javax.swing.JLabel();
+        logout_btn = new javax.swing.JButton();
         jLabel48 = new javax.swing.JLabel();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel52 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        hayvan_btn3 = new javax.swing.JButton();
-        kullanici_btn3 = new javax.swing.JButton();
-        musteri_btn3 = new javax.swing.JButton();
-        fatura_btn3 = new javax.swing.JButton();
-        urun_btn3 = new javax.swing.JButton();
-        cikis_btn3 = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
         amountField = new javax.swing.JTextField();
         priceField = new javax.swing.JTextField();
         deleteButton = new javax.swing.JButton();
@@ -67,6 +66,9 @@ public class AdminProducts extends javax.swing.JFrame {
         productTable = new javax.swing.JTable();
         username_Label5 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        productTable1 = new javax.swing.JTable();
+        username_Label6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,128 +77,135 @@ public class AdminProducts extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setPreferredSize(new java.awt.Dimension(1204, 163));
 
-        jLabel20.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel20.setText("HAYVANLAR");
+        products_btn.setBackground(new java.awt.Color(255, 204, 204));
+        products_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1375593-200-removebg-preview 1.png"))); // NOI18N
+        products_btn.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/img/1375593-200-removebg-preview 1.png"))); // NOI18N
+        products_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                products_btnusers_btn(evt);
+            }
+        });
+
+        ads_btn.setBackground(new java.awt.Color(255, 204, 204));
+        ads_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pets.png"))); // NOI18N
+        ads_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ads_btncustomers_btn(evt);
+            }
+        });
+
+        users_btn.setBackground(new java.awt.Color(255, 204, 204));
+        users_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/customer.png"))); // NOI18N
+        users_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                users_btnbilling_btn(evt);
+            }
+        });
+
+        apandor_btn.setBackground(new java.awt.Color(255, 204, 204));
+        apandor_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/users.png"))); // NOI18N
+        apandor_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                apandor_btnActionPerformed(evt);
+            }
+        });
 
         jLabel44.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel44.setText("KULLANICILAR");
+        jLabel44.setText("PRODUCTS");
+
+        logout_btn.setBackground(new java.awt.Color(255, 204, 204));
+        logout_btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logout.png"))); // NOI18N
+        logout_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logout_btnlogout_btn(evt);
+            }
+        });
 
         jLabel48.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel48.setText("ILANLAR");
+        jLabel48.setText("ADS");
 
-        jLabel49.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel49.setText("PROFIL");
+        jLabel49.setFont(new java.awt.Font("Imprint MT Shadow", 1, 10)); // NOI18N
+        jLabel49.setText("APPLICATIONS  AND ORDERS");
 
         jLabel50.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel50.setText("       CIKIS");
+        jLabel50.setText("LOG OUT");
 
         jLabel52.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        jLabel52.setText("ILANLARIM");
-
-        hayvan_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        hayvan_btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hayvan_btn3pets_btn(evt);
-            }
-        });
-
-        kullanici_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        kullanici_btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kullanici_btn3users_btn(evt);
-            }
-        });
-
-        musteri_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        musteri_btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                musteri_btn3customers_btn(evt);
-            }
-        });
-
-        fatura_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        fatura_btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fatura_btn3billing_btn(evt);
-            }
-        });
-
-        urun_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        urun_btn3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/customer.png"))); // NOI18N
-
-        cikis_btn3.setBackground(new java.awt.Color(255, 204, 204));
-        cikis_btn3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cikis_btn3logout_btn(evt);
-            }
-        });
+        jLabel52.setText("USERS");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel20)
-                    .addComponent(hayvan_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(kullanici_btn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(46, 46, 46)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(musteri_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel48)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(fatura_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel52)
-                        .addGap(14, 14, 14)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(urun_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cikis_btn3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(224, 224, 224))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addGap(45, 45, 45)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel6Layout.createSequentialGroup()
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel44, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(products_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(125, 125, 125)
+                                    .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(169, 169, 169)
+                                    .addComponent(jLabel48)))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(119, 119, 119)
+                                    .addComponent(users_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(122, 122, 122))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel52)
+                                    .addGap(145, 145, 145)))
+                            .addComponent(apandor_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(69, 69, 69)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(218, 218, 218)))
+                    .addGap(45, 45, 45)))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hayvan_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kullanici_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(musteri_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(fatura_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(urun_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cikis_btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(92, 92, 92)
+                .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(users_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(apandor_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel48, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel52, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         amountField.setBackground(new java.awt.Color(245, 245, 245));
@@ -270,6 +279,31 @@ public class AdminProducts extends javax.swing.JFrame {
             }
         });
 
+        productTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        productTable1.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        productTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Product Name", "Amount", "Price"
+            }
+        ));
+        productTable1.setRowHeight(30);
+        productTable1.setRowMargin(2);
+        productTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                productTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(productTable1);
+
+        username_Label6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        username_Label6.setText("Products");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -281,6 +315,8 @@ public class AdminProducts extends javax.swing.JFrame {
                 .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(97, 97, 97)
@@ -288,7 +324,7 @@ public class AdminProducts extends javax.swing.JFrame {
                     .addComponent(username_Label4)
                     .addComponent(username_Label)
                     .addComponent(username_Label1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(amountField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,18 +335,23 @@ public class AdminProducts extends javax.swing.JFrame {
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(username_Label5)
-                .addGap(262, 262, 262))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(username_Label5)
+                        .addGap(262, 262, 262))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(username_Label6)
+                        .addGap(251, 251, 251))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(username_Label5)
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(username_Label4))
@@ -322,44 +363,22 @@ public class AdminProducts extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(priceField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(username_Label1, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(191, 191, 191))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(191, 191, 191)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(37, 37, 37))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(200, 200, 200)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(37, 37, 37))
+                        .addGap(33, 33, 33)
+                        .addComponent(username_Label6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void hayvan_btn3pets_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hayvan_btn3pets_btn
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_hayvan_btn3pets_btn
-
-    private void kullanici_btn3users_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kullanici_btn3users_btn
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_kullanici_btn3users_btn
-
-    private void musteri_btn3customers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_musteri_btn3customers_btn
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_musteri_btn3customers_btn
-
-    private void fatura_btn3billing_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fatura_btn3billing_btn
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_fatura_btn3billing_btn
-
-    private void cikis_btn3logout_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cikis_btn3logout_btn
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_cikis_btn3logout_btn
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         try {
@@ -463,6 +482,63 @@ public class AdminProducts extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_addButtonActionPerformed
 
+    private void products_btnusers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_products_btnusers_btn
+        // TODO add your handling code here:
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new AdminProducts().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_products_btnusers_btn
+
+    private void ads_btncustomers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ads_btncustomers_btn
+        // TODO add your handling code here:
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new AdminAds().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_ads_btncustomers_btn
+
+    private void users_btnbilling_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_users_btnbilling_btn
+        // TODO add your handling code here:
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
+                new Users().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+    }//GEN-LAST:event_users_btnbilling_btn
+
+    private void apandor_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apandor_btnActionPerformed
+        try {
+            // TODO add your handling code here:
+            new AP_OR().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_apandor_btnActionPerformed
+
+    private void logout_btnlogout_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnlogout_btn
+        // TODO add your handling code here:
+        dispose();
+        java.awt.EventQueue.invokeLater(() -> {
+            new Login().setVisible(true);
+        });
+    }//GEN-LAST:event_logout_btnlogout_btn
+
+    private void productTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTable1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productTable1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -511,14 +587,13 @@ public class AdminProducts extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
+    private javax.swing.JButton ads_btn;
     private javax.swing.JTextField amountField;
-    private javax.swing.JButton cikis_btn3;
+    private javax.swing.JButton apandor_btn;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
-    private javax.swing.JButton fatura_btn3;
-    private javax.swing.JButton hayvan_btn3;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
@@ -526,16 +601,19 @@ public class AdminProducts extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton kullanici_btn3;
-    private javax.swing.JButton musteri_btn3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton logout_btn;
     private javax.swing.JTextField nameField;
     private javax.swing.JTextField priceField;
     private javax.swing.JTable productTable;
-    private javax.swing.JButton urun_btn3;
+    private javax.swing.JTable productTable1;
+    private javax.swing.JButton products_btn;
     private javax.swing.JLabel username_Label;
     private javax.swing.JLabel username_Label1;
     private javax.swing.JLabel username_Label4;
     private javax.swing.JLabel username_Label5;
+    private javax.swing.JLabel username_Label6;
+    private javax.swing.JButton users_btn;
     // End of variables declaration//GEN-END:variables
 
     private void displayProducts() throws SQLException {

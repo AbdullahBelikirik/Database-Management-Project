@@ -135,7 +135,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tempus Sans ITC" size="20" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="BASVUR"/>
+        <Property name="text" type="java.lang.String" value="SATIN AL"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
             <EmptyBorder/>
@@ -163,49 +163,50 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
-                      <Component id="hayvan_btn3" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel44" alignment="0" max="32767" attributes="0"/>
-                      <Component id="kullanici_btn3" alignment="0" max="32767" attributes="0"/>
+                      <Component id="products_btn" alignment="0" max="32767" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="musteri_btn3" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="125" max="-2" attributes="0"/>
+                          <Component id="ads_btn" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                           <Component id="jLabel48" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Component id="fatura_btn3" min="-2" pref="169" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                          <Component id="myads_btn" min="-2" pref="125" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jLabel52" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                          <Component id="urun_btn3" min="-2" pref="161" max="-2" attributes="0"/>
-                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                          <Component id="profile_btn" min="-2" pref="125" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel49" min="-2" pref="127" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="cikis_btn3" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel50" alignment="0" pref="135" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="logout_btn" min="-2" pref="125" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel50" alignment="1" min="-2" pref="119" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -221,16 +222,14 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="hayvan_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="kullanici_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="musteri_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="fatura_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="urun_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
-                      <Component id="cikis_btn3" alignment="3" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="products_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="ads_btn" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="myads_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="profile_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="logout_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel20" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jLabel44" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jLabel48" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="jLabel52" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
@@ -245,107 +244,70 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabel20">
+        <Component class="javax.swing.JButton" name="products_btn">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Imprint MT Shadow" size="20" style="1"/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="HAYVANLAR"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/1375593-200-removebg-preview 1.png"/>
+            </Property>
+            <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/1375593-200-removebg-preview 1.png"/>
+            </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="products_btnusers_btn"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="ads_btn">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/pets.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ads_btncustomers_btn"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="myads_btn">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/bill.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="myads_btnbilling_btn"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="profile_btn">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="cc" green="cc" red="ff" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/users.png"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="profile_btnActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel44">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Imprint MT Shadow" size="20" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="KULLANICILAR"/>
+            <Property name="text" type="java.lang.String" value="PRODUCTS"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel48">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Imprint MT Shadow" size="20" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ILANLAR"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel49">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Imprint MT Shadow" size="20" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PROFIL"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel50">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Imprint MT Shadow" size="20" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="       CIKIS"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel52">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Imprint MT Shadow" size="20" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="ILANLARIM"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel17">
-        </Component>
-        <Component class="javax.swing.JButton" name="hayvan_btn3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="hayvan_btn3pets_btn"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="kullanici_btn3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="kullanici_btn3users_btn"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="musteri_btn3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="musteri_btn3customers_btn"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="fatura_btn3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fatura_btn3billing_btn"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="urun_btn3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cc" green="cc" red="ff" type="rgb"/>
-            </Property>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/img/customer.png"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="cikis_btn3">
+        <Component class="javax.swing.JButton" name="logout_btn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="cc" green="cc" red="ff" type="rgb"/>
@@ -355,8 +317,42 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cikis_btn3logout_btn"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="logout_btnlogout_btn"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel48">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Imprint MT Shadow" size="20" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ADS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel49">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Imprint MT Shadow" size="20" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="PROFILE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel50">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Imprint MT Shadow" size="20" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="LOG OUT"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel52">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Imprint MT Shadow" size="20" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="MY ADS"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel17">
         </Component>
       </SubComponents>
     </Container>
