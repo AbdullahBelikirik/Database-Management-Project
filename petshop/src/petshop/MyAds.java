@@ -421,7 +421,7 @@ public class MyAds extends javax.swing.JFrame {
     private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
 
         try {
-            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from ad where type = ?, address = ?, description = ?");
+            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from ad where type = ? AND address = ? AND description = ?");
             
             int selectedRowIndex = myAdsTable.getSelectedRow();
             if (selectedRowIndex != -1) {
@@ -442,7 +442,7 @@ public class MyAds extends javax.swing.JFrame {
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
         try {
-            String updateQuery = "Update ad Set type = ?, age = ?, sex = ?, address = ?, description = ? where type = ?, address = ?, description = ?";
+            String updateQuery = "UPDATE ad SET type = ?, age = ?, sex = ?, address = ?, description = ? WHERE type = ? AND address = ? AND description = ?";
             PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
 
             int selectedRowIndex = myAdsTable.getSelectedRow();
@@ -638,7 +638,7 @@ public class MyAds extends javax.swing.JFrame {
             if (idset.next()) {
                 int userId = idset.getInt("id");
                
-                String selectQuery = "SELECT tpye, age, sex, address, description FROM ad WHERE userid = ?";
+                String selectQuery = "SELECT type, age, sex, address, description FROM ad WHERE userid = ?";
                 PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
                 selectStatement.setInt(1, userId);
 

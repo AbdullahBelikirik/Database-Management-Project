@@ -95,11 +95,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="255" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="countLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="countLabel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="countLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="edit_btn" min="-2" pref="178" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -114,13 +110,6 @@
                   <Component id="jScrollPane2" alignment="1" min="-2" pref="519" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                  <Component id="countLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="942" max="32767" attributes="0"/>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -170,9 +159,7 @@
                           <Component id="phonenumberField" min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="phonenumber_Label1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="countLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                       <Component id="countLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="73" max="32767" attributes="0"/>
                       <Component id="edit_btn" min="-2" pref="36" max="-2" attributes="0"/>
@@ -185,13 +172,6 @@
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="623" max="32767" attributes="0"/>
-                  <Component id="countLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -640,21 +620,6 @@
           <Font name="Tempus Sans ITC" size="22" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Phone Number"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="countLabel1">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="22" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Applicant Count ="/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="countLabel2">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tempus Sans ITC" size="22" style="1"/>
-        </Property>
       </Properties>
     </Component>
   </SubComponents>

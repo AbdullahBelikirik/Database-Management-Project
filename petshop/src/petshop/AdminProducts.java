@@ -30,6 +30,7 @@ public class AdminProducts extends javax.swing.JFrame {
     public AdminProducts() throws SQLException {
         initComponents();
         displayProducts();
+        displayOutOfStock();
     }
 
     /**
@@ -407,7 +408,7 @@ public class AdminProducts extends javax.swing.JFrame {
 
             int selectedRowIndex = productTable.getSelectedRow();
             if (selectedRowIndex != -1) {
-                String oldProductName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
+                String oldProductName = (String) productTable.getValueAt(selectedRowIndex, 0).toString();
                 
                 if (nameField.getText().isEmpty() || priceField.getText().isEmpty() || amountField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "Please enter all required fields.");
@@ -430,6 +431,7 @@ public class AdminProducts extends javax.swing.JFrame {
             }
             updateStatement.close();
             displayProducts();
+            displayOutOfStock();
         } catch (SQLException ex) {
             Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex);
@@ -438,8 +440,8 @@ public class AdminProducts extends javax.swing.JFrame {
 
     private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
         int selectedRowIndex = productTable.getSelectedRow();
-        nameField.setText((String) productTable.getValueAt(selectedRowIndex, 1).toString());
-        amountField.setText((String) productTable.getValueAt(selectedRowIndex, 0).toString());
+        nameField.setText((String) productTable.getValueAt(selectedRowIndex, 0).toString());
+        amountField.setText((String) productTable.getValueAt(selectedRowIndex, 1).toString());
         priceField.setText((String) productTable.getValueAt(selectedRowIndex, 2).toString());
         
     }//GEN-LAST:event_productTableMouseClicked
@@ -658,7 +660,7 @@ public class AdminProducts extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        String SelectQuery = "SELECT name,count,price FROM products EXCEPT SELECT * FROM products where count<1";
+        String SelectQuery = "SELECT name,count,price FROM products EXCEPT SELECT name,count,price FROM products where count>1";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();

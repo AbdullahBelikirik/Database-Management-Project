@@ -31,7 +31,8 @@ public class Profile extends javax.swing.JFrame {
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
     private static int userid;
-    Connection conn = null;
+ 
+    Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
     /**
      * Creates new form my_ads
      * @param username
@@ -84,8 +85,6 @@ public class Profile extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         applicationsTable1 = new javax.swing.JTable();
         phonenumber_Label1 = new javax.swing.JLabel();
-        countLabel1 = new javax.swing.JLabel();
-        countLabel2 = new javax.swing.JLabel();
 
         edit_btn1.setBackground(new java.awt.Color(255, 204, 204));
         edit_btn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
@@ -341,11 +340,6 @@ public class Profile extends javax.swing.JFrame {
         phonenumber_Label1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         phonenumber_Label1.setText("Phone Number");
 
-        countLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        countLabel1.setText("Applicant Count =");
-
-        countLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -388,10 +382,7 @@ public class Profile extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(255, 255, 255)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(countLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(countLabel2))
+                            .addComponent(countLabel)
                             .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -401,11 +392,6 @@ public class Profile extends javax.swing.JFrame {
                         .addGap(144, 144, 144))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(65, 65, 65)
-                    .addComponent(countLabel1)
-                    .addContainerGap(942, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -444,9 +430,7 @@ public class Profile extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(phonenumber_Label1))
-                        .addGap(37, 37, 37)
-                        .addComponent(countLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(43, 43, 43)
                         .addComponent(countLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                         .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -456,11 +440,6 @@ public class Profile extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(51, 51, 51))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addContainerGap(623, Short.MAX_VALUE)
-                    .addComponent(countLabel1)
-                    .addGap(134, 134, 134)))
         );
 
         pack();
@@ -629,8 +608,6 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JTable applicationsTable;
     private javax.swing.JTable applicationsTable1;
     private javax.swing.JLabel countLabel;
-    private javax.swing.JLabel countLabel1;
-    private javax.swing.JLabel countLabel2;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
     private javax.swing.JLabel jLabel15;
@@ -698,7 +675,7 @@ public class Profile extends javax.swing.JFrame {
         if (idset.next()) {
             Profile.userid = idset.getInt("id");
             
-            String selectQuery = "SELECT adID, referencedID, date FROM users WHERE applicantID = ?";
+            String selectQuery = "SELECT application.adID, application.referencedID, application.date FROM application WHERE applicantID = ?";
             PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
             selectStatement.setInt(1, Profile.userid);
             ResultSet resultSet = selectStatement.executeQuery();
@@ -729,7 +706,7 @@ public class Profile extends javax.swing.JFrame {
     }
 
     private void displayCount() throws SQLException {
-        String selectQuery = "SELECT count(*) AS total FROM application HAVING applicantID = ?";
+        String selectQuery = "SELECT count(*) AS total FROM application GROUP BY applicantid HAVING applicantID = ?";
         PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
         selectStatement.setInt(1, Profile.userid);
         ResultSet resultSet = selectStatement.executeQuery();
@@ -739,7 +716,7 @@ public class Profile extends javax.swing.JFrame {
             count = resultSet.getInt("total");
         }
         
-        countLabel.setText("Applicant Count =" + String.valueOf(count));
+        jLabel15.setText("Your " + String.valueOf(count)+" Ad(s)");
     }
    
 }
