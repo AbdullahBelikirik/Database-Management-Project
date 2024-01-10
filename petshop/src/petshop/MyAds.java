@@ -27,17 +27,12 @@ public class MyAds extends javax.swing.JFrame {
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
     Connection conn = null;
-    /**
-     * Creates new form my_ads
-     * @param username
-     */
-    public MyAds(String username) throws SQLException {
-        MyAds.username = username;
+    
+    public MyAds() throws SQLException {
         initComponents();
         displayMyAds();
     }
     
-    static String username;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,8 +44,8 @@ public class MyAds extends javax.swing.JFrame {
     private void initComponents() {
 
         edit_btn1 = new javax.swing.JButton();
-        type_field = new javax.swing.JTextField();
-        description_field = new javax.swing.JTextField();
+        typeField = new javax.swing.JTextField();
+        descriptionField = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel44 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
@@ -63,8 +58,8 @@ public class MyAds extends javax.swing.JFrame {
         myads_btn = new javax.swing.JButton();
         profile_btn = new javax.swing.JButton();
         logout_btn = new javax.swing.JButton();
-        age_field = new javax.swing.JTextField();
-        sex_field = new javax.swing.JTextField();
+        ageField = new javax.swing.JTextField();
+        sexField = new javax.swing.JTextField();
         delete_btn = new javax.swing.JButton();
         edit_btn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -74,7 +69,7 @@ public class MyAds extends javax.swing.JFrame {
         username_Label2 = new javax.swing.JLabel();
         username_Label3 = new javax.swing.JLabel();
         username_Label4 = new javax.swing.JLabel();
-        address_field = new javax.swing.JTextField();
+        addressField = new javax.swing.JTextField();
         add_button = new javax.swing.JButton();
 
         edit_btn1.setBackground(new java.awt.Color(255, 204, 204));
@@ -90,14 +85,14 @@ public class MyAds extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        type_field.setBackground(new java.awt.Color(245, 245, 245));
-        type_field.addActionListener(new java.awt.event.ActionListener() {
+        typeField.setBackground(new java.awt.Color(245, 245, 245));
+        typeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                type_fieldActionPerformed(evt);
+                typeFieldActionPerformed(evt);
             }
         });
 
-        description_field.setBackground(new java.awt.Color(245, 245, 245));
+        descriptionField.setBackground(new java.awt.Color(245, 245, 245));
 
         jPanel6.setBackground(new java.awt.Color(255, 204, 204));
         jPanel6.setPreferredSize(new java.awt.Dimension(1204, 163));
@@ -184,11 +179,8 @@ public class MyAds extends javax.swing.JFrame {
                         .addComponent(jLabel52)
                         .addGap(145, 145, 145)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +190,7 @@ public class MyAds extends javax.swing.JFrame {
                     .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(889, Short.MAX_VALUE)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(224, 224, 224))
         );
@@ -206,9 +198,9 @@ public class MyAds extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -224,9 +216,9 @@ public class MyAds extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        age_field.setBackground(new java.awt.Color(245, 245, 245));
+        ageField.setBackground(new java.awt.Color(245, 245, 245));
 
-        sex_field.setBackground(new java.awt.Color(245, 245, 245));
+        sexField.setBackground(new java.awt.Color(245, 245, 245));
 
         delete_btn.setBackground(new java.awt.Color(255, 204, 204));
         delete_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
@@ -287,7 +279,7 @@ public class MyAds extends javax.swing.JFrame {
         username_Label4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         username_Label4.setText("Type");
 
-        address_field.setBackground(new java.awt.Color(245, 245, 245));
+        addressField.setBackground(new java.awt.Color(245, 245, 245));
 
         add_button.setBackground(new java.awt.Color(255, 204, 204));
         add_button.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
@@ -324,19 +316,19 @@ public class MyAds extends javax.swing.JFrame {
                             .addComponent(username_Label2))
                         .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(description_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                            .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15))
             .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(257, 257, 257)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(type_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
-                        .addComponent(sex_field)
-                        .addComponent(age_field, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
+                        .addComponent(typeField, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                        .addComponent(sexField)
+                        .addComponent(ageField, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE))
                     .addContainerGap(648, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -357,11 +349,11 @@ public class MyAds extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(username_Label2)
-                            .addComponent(address_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(username_Label3)
-                            .addComponent(description_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(161, 161, 161)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(delete_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -371,11 +363,11 @@ public class MyAds extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(270, 270, 270)
-                    .addComponent(type_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typeField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(32, 32, 32)
-                    .addComponent(age_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ageField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(33, 33, 33)
-                    .addComponent(sex_field, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sexField, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(343, Short.MAX_VALUE)))
         );
 
@@ -411,7 +403,7 @@ public class MyAds extends javax.swing.JFrame {
          dispose();
 	    java.awt.EventQueue.invokeLater(() -> {
                 try {
-                    new MyAds(MyAds.username).setVisible(true);
+                    new MyAds().setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -428,17 +420,71 @@ public class MyAds extends javax.swing.JFrame {
 
     private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
 
-        // TODO add your handling code here:
+        try {
+            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from ad where type = ?, address = ?, description = ?");
+            
+            int selectedRowIndex = myAdsTable.getSelectedRow();
+            if (selectedRowIndex != -1) {
+                deleteStatement.setString(1, myAdsTable.getValueAt(selectedRowIndex, 0).toString());
+                deleteStatement.setString(2, myAdsTable.getValueAt(selectedRowIndex, 3).toString());
+                deleteStatement.setString(3, myAdsTable.getValueAt(selectedRowIndex, 4).toString());
+                deleteStatement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Your ad deleted.");
+                displayMyAds();
+            } else {
+                JOptionPane.showMessageDialog(this, "You have to choose a ad to delete.");
+            }
+            deleteStatement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_delete_btnActionPerformed
 
     private void edit_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btnActionPerformed
+        try {
+            String updateQuery = "Update ad Set type = ?, age = ?, sex = ?, address = ?, description = ? where type = ?, address = ?, description = ?";
+            PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
 
-        // TODO add your handling code here:
+            int selectedRowIndex = myAdsTable.getSelectedRow();
+            if (selectedRowIndex != -1) {
+                
+                
+                if (ageField.getText().isEmpty() || sexField.getText().isEmpty() || typeField.getText().isEmpty() || addressField.getText().isEmpty() || descriptionField.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "You have to enter all required fields");
+                
+                } else {
+                    String agetxt = ageField.getText();
+                    int age = Integer.parseInt(agetxt);
+                    updateStatement.setString(1, typeField.getText());
+                    updateStatement.setInt(2, age);
+                    updateStatement.setString(3, sexField.getText());
+                    updateStatement.setString(4, addressField.getText());
+                    updateStatement.setString(5, descriptionField.getText());
+                    updateStatement.setString(6, myAdsTable.getValueAt(selectedRowIndex, 0).toString());
+                    updateStatement.setString(7, myAdsTable.getValueAt(selectedRowIndex, 3).toString());
+                    updateStatement.setString(8, myAdsTable.getValueAt(selectedRowIndex, 4).toString());
+                    updateStatement.executeUpdate();
+                    
+                    JOptionPane.showMessageDialog(this, "You updated your ad");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "You have to choose a ad to update.");
+            }
+            updateStatement.close();
+            displayMyAds();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, ex);
+        }
     }//GEN-LAST:event_edit_btnActionPerformed
 
     private void myAdsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myAdsTableMouseClicked
-
-        // TODO add your handling code here:
+        int selectedRowIndex = myAdsTable.getSelectedRow();
+        typeField.setText((String) myAdsTable.getValueAt(selectedRowIndex, 0).toString());
+        ageField.setText((String) myAdsTable.getValueAt(selectedRowIndex, 1).toString());
+        sexField.setText((String) myAdsTable.getValueAt(selectedRowIndex, 2).toString());
+        addressField.setText((String) myAdsTable.getValueAt(selectedRowIndex, 3).toString());
+        descriptionField.setText((String) myAdsTable.getValueAt(selectedRowIndex, 4).toString());
     }//GEN-LAST:event_myAdsTableMouseClicked
 
     private void edit_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edit_btn1ActionPerformed
@@ -454,7 +500,7 @@ public class MyAds extends javax.swing.JFrame {
         }
         Date currentDate = new Date();
         DateFormat defaultDateFormat = DateFormat.getDateInstance();
-        if (type_field.getText().isEmpty() || age_field.getText().isEmpty() || sex_field.getText().isEmpty() || address_field.getText().isEmpty() || description_field.getText().isEmpty()) {
+        if (typeField.getText().isEmpty() || ageField.getText().isEmpty() || sexField.getText().isEmpty() || addressField.getText().isEmpty() || descriptionField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter all required values.");
         } else {
             try {
@@ -463,7 +509,7 @@ public class MyAds extends javax.swing.JFrame {
 
                 String selectQuery = "SELECT id FROM users WHERE username = ?";
                 PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery);
-                selectStatement.setString(1, MyAds.username);
+                selectStatement.setString(1, Login.userName);
                 ResultSet resultSet = selectStatement.executeQuery();
 
                 if (resultSet.next()) {
@@ -472,13 +518,13 @@ public class MyAds extends javax.swing.JFrame {
 
                     String insertQuery = "INSERT INTO ad (address, description, age, sex, type, date, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
-                    String ageText = age_field.getText();
+                    String ageText = ageField.getText();
                     int age = Integer.parseInt(ageText);
-                    insertStatement.setString(1, address_field.getText());
-                    insertStatement.setString(2, description_field.getText());
+                    insertStatement.setString(1, addressField.getText());
+                    insertStatement.setString(2, descriptionField.getText());
                     insertStatement.setInt(3, age);
-                    insertStatement.setString(4, sex_field.getText());
-                    insertStatement.setString(5, type_field.getText());
+                    insertStatement.setString(4, sexField.getText());
+                    insertStatement.setString(5, typeField.getText());
                     insertStatement.setDate(6, new java.sql.Date(currentDate.getTime()));
                     insertStatement.setInt(7, userId);
 
@@ -498,14 +544,14 @@ public class MyAds extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_add_buttonActionPerformed
 
-    private void type_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_type_fieldActionPerformed
+    private void typeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_type_fieldActionPerformed
+    }//GEN-LAST:event_typeFieldActionPerformed
 
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
         try {
             // TODO add your handling code here:
-            new Profile(MyAds.username).setVisible(true);
+            new Profile().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -542,7 +588,7 @@ public class MyAds extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new MyAds(username).setVisible(true);
+                new MyAds().setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -551,11 +597,11 @@ public class MyAds extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_button;
-    private javax.swing.JTextField address_field;
+    private javax.swing.JTextField addressField;
     private javax.swing.JButton ads_btn;
-    private javax.swing.JTextField age_field;
+    private javax.swing.JTextField ageField;
     private javax.swing.JButton delete_btn;
-    private javax.swing.JTextField description_field;
+    private javax.swing.JTextField descriptionField;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
     private javax.swing.JLabel jLabel17;
@@ -571,8 +617,8 @@ public class MyAds extends javax.swing.JFrame {
     private javax.swing.JButton myads_btn;
     private javax.swing.JButton products_btn;
     private javax.swing.JButton profile_btn;
-    private javax.swing.JTextField sex_field;
-    private javax.swing.JTextField type_field;
+    private javax.swing.JTextField sexField;
+    private javax.swing.JTextField typeField;
     private javax.swing.JLabel username_Label;
     private javax.swing.JLabel username_Label1;
     private javax.swing.JLabel username_Label2;
@@ -586,13 +632,13 @@ public class MyAds extends javax.swing.JFrame {
             
             String selectIDQuery = "SELECT id FROM users WHERE username = ?";
             PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
-            selectIDStatement.setString(1, MyAds.username);
+            selectIDStatement.setString(1, Login.userName);
             ResultSet idset = selectIDStatement.executeQuery();
             
             if (idset.next()) {
                 int userId = idset.getInt("id");
                
-                String selectQuery = "SELECT * FROM ad WHERE userid = ?";
+                String selectQuery = "SELECT tpye, age, sex, address, description FROM ad WHERE userid = ?";
                 PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
                 selectStatement.setInt(1, userId);
 

@@ -232,12 +232,8 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="profile_btn" min="-2" pref="125" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="profile_btn" alignment="0" min="-2" pref="125" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel49" min="-2" pref="127" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       </Group>
@@ -262,7 +258,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="products_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="ads_btn" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                       <Component id="myads_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>

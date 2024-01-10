@@ -51,7 +51,7 @@
               <Component id="jScrollPane1" min="-2" pref="519" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
-          <Component id="jPanel6" alignment="0" pref="1190" max="32767" attributes="0"/>
+          <Component id="jPanel6" alignment="0" pref="1192" max="32767" attributes="0"/>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -61,7 +61,7 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="username_Label6" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -206,7 +206,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="products_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                           <Component id="ads_btn" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                           <Component id="users_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
@@ -504,7 +504,7 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="productTable1">
+        <Component class="javax.swing.JTable" name="oosTable">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.BevelBorderInfo">
@@ -528,7 +528,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="productTable1MouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="oosTableMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
@@ -538,7 +538,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tempus Sans ITC" size="22" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Products"/>
+        <Property name="text" type="java.lang.String" value="Out of Stock"/>
       </Properties>
     </Component>
   </SubComponents>

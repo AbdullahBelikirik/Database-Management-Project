@@ -30,17 +30,17 @@ public class Profile extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
+    private static int userid;
     Connection conn = null;
-    static String username;
     /**
      * Creates new form my_ads
      * @param username
      */
-    public Profile(String username) throws SQLException {
-        Profile.username = username;
+    public Profile() throws SQLException {
         initComponents();
         displayProfile();
-      //  displayMyApplications();
+        displayCount();
+        displayMyApplications();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,7 +69,7 @@ public class Profile extends javax.swing.JFrame {
         applicationsTable = new javax.swing.JTable();
         surname_Label = new javax.swing.JLabel();
         surnameField = new javax.swing.JPasswordField();
-        phonenumber_Label = new javax.swing.JLabel();
+        countLabel = new javax.swing.JLabel();
         address_Label = new javax.swing.JLabel();
         addressField = new javax.swing.JTextField();
         nameField = new javax.swing.JTextField();
@@ -83,6 +83,9 @@ public class Profile extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         applicationsTable1 = new javax.swing.JTable();
+        phonenumber_Label1 = new javax.swing.JLabel();
+        countLabel1 = new javax.swing.JLabel();
+        countLabel2 = new javax.swing.JLabel();
 
         edit_btn1.setBackground(new java.awt.Color(255, 204, 204));
         edit_btn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
@@ -182,11 +185,9 @@ public class Profile extends javax.swing.JFrame {
                         .addComponent(jLabel52)
                         .addGap(145, 145, 145)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,9 +205,9 @@ public class Profile extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,8 +266,7 @@ public class Profile extends javax.swing.JFrame {
             }
         });
 
-        phonenumber_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        phonenumber_Label.setText("Phone Number");
+        countLabel.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
 
         address_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         address_Label.setText("Address");
@@ -338,6 +338,14 @@ public class Profile extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(applicationsTable1);
 
+        phonenumber_Label1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        phonenumber_Label1.setText("Phone Number");
+
+        countLabel1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+        countLabel1.setText("Applicant Count =");
+
+        countLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -374,12 +382,17 @@ public class Profile extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(phonenumber_Label)
+                                .addComponent(phonenumber_Label1)
                                 .addGap(18, 18, 18)
                                 .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(255, 255, 255)
-                        .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(countLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(countLabel2))
+                            .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -388,6 +401,11 @@ public class Profile extends javax.swing.JFrame {
                         .addGap(144, 144, 144))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(65, 65, 65)
+                    .addComponent(countLabel1)
+                    .addContainerGap(942, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -422,11 +440,15 @@ public class Profile extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(address_Label)
                             .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(phonenumber_Label)
-                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phonenumber_Label1))
+                        .addGap(37, 37, 37)
+                        .addComponent(countLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(countLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                         .addComponent(edit_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -434,6 +456,11 @@ public class Profile extends javax.swing.JFrame {
                         .addGap(7, 7, 7)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
                 .addGap(51, 51, 51))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(623, Short.MAX_VALUE)
+                    .addComponent(countLabel1)
+                    .addGap(134, 134, 134)))
         );
 
         pack();
@@ -460,11 +487,12 @@ public class Profile extends javax.swing.JFrame {
                 updateStatement.setString(4, passwordField.getText());
                 updateStatement.setString(5, addressField.getText());
                 updateStatement.setString(6, phonenumberField.getText());
-                updateStatement.setString(7, Profile.username);
+                updateStatement.setString(7, Login.userName);
                 updateStatement.executeUpdate();
-                Profile.username = usernameField.getText();
+                Login.userName = usernameField.getText();
                 JOptionPane.showMessageDialog(this, "You updated your profile");
                 updateStatement.close();
+                displayProfile();
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
@@ -531,7 +559,7 @@ public class Profile extends javax.swing.JFrame {
         dispose();
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new MyAds(Profile.username).setVisible(true);
+                new MyAds().setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -539,12 +567,7 @@ public class Profile extends javax.swing.JFrame {
     }//GEN-LAST:event_myads_btnbilling_btn
 
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
-        try {
-            // TODO add your handling code here:
-            new Profile(Profile.username).setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_profile_btnActionPerformed
 
     private void logout_btnlogout_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logout_btnlogout_btn
@@ -592,7 +615,7 @@ public class Profile extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new Profile(username).setVisible(true);
+                new Profile().setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -605,6 +628,9 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton ads_btn;
     private javax.swing.JTable applicationsTable;
     private javax.swing.JTable applicationsTable1;
+    private javax.swing.JLabel countLabel;
+    private javax.swing.JLabel countLabel1;
+    private javax.swing.JLabel countLabel2;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
     private javax.swing.JLabel jLabel15;
@@ -625,7 +651,7 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JTextField passwordField;
     private javax.swing.JLabel password_Label;
     private javax.swing.JTextField phonenumberField;
-    private javax.swing.JLabel phonenumber_Label;
+    private javax.swing.JLabel phonenumber_Label1;
     private javax.swing.JButton products_btn;
     private javax.swing.JButton profile_btn;
     private javax.swing.JPasswordField surnameField;
@@ -636,18 +662,15 @@ public class Profile extends javax.swing.JFrame {
 
     private void displayProfile() throws SQLException { 
         try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-    // Call the PostgreSQL function to get user information by name
+            
       String getUserFunction = "{call get_user_by_name(?)}";
     try (CallableStatement getUserStatement = conn.prepareCall(getUserFunction)) {
-      //  getUserStatement.registerOutParameter(1, Types.OTHER);
-        getUserStatement.setString(1, Profile.username);
+        getUserStatement.setString(1, Login.userName);
         getUserStatement.execute();
 
-        // Get the result set from the function call
         ResultSet resultSet = getUserStatement.getResultSet();
 
         if (resultSet != null && resultSet.next()) {
-            // Update the UI with the retrieved user information
             nameField.setText(resultSet.getString("name"));
             surnameField.setText(resultSet.getString("surname"));
             passwordField.setText(resultSet.getString("password"));
@@ -669,16 +692,16 @@ public class Profile extends javax.swing.JFrame {
         
         String selectIDQuery = "SELECT id FROM users WHERE username = ?";
         PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
-        selectIDStatement.setString(1, Profile.username);
+        selectIDStatement.setString(1, Login.userName);
         ResultSet idset = selectIDStatement.executeQuery();
         
         if (idset.next()) {
-            int userId = idset.getInt("id");
+            Profile.userid = idset.getInt("id");
             
             String selectQuery = "SELECT adID, referencedID, date FROM users WHERE applicantID = ?";
-            PreparedStatement selectStatement = conn.prepareStatement(selectIDQuery);
-            selectIDStatement.setInt(1, userId);
-            ResultSet resultSet = selectIDStatement.executeQuery();
+            PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+            selectStatement.setInt(1, Profile.userid);
+            ResultSet resultSet = selectStatement.executeQuery();
 
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columnCount = metaData.getColumnCount();
@@ -704,4 +727,19 @@ public class Profile extends javax.swing.JFrame {
             resultSet.close();
         }
     }
+
+    private void displayCount() throws SQLException {
+        String selectQuery = "SELECT count(*) AS total FROM application HAVING applicantID = ?";
+        PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+        selectStatement.setInt(1, Profile.userid);
+        ResultSet resultSet = selectStatement.executeQuery();
+        
+        int count = 0;
+        if (resultSet.next()) {
+            count = resultSet.getInt("total");
+        }
+        
+        countLabel.setText("Applicant Count =" + String.valueOf(count));
+    }
+   
 }

@@ -67,7 +67,7 @@ public class AdminProducts extends javax.swing.JFrame {
         username_Label5 = new javax.swing.JLabel();
         addButton = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        productTable1 = new javax.swing.JTable();
+        oosTable = new javax.swing.JTable();
         username_Label6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,9 +191,9 @@ public class AdminProducts extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel6Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(users_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(apandor_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -279,9 +279,9 @@ public class AdminProducts extends javax.swing.JFrame {
             }
         });
 
-        productTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        productTable1.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        productTable1.setModel(new javax.swing.table.DefaultTableModel(
+        oosTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        oosTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        oosTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -292,17 +292,17 @@ public class AdminProducts extends javax.swing.JFrame {
                 "Product Name", "Amount", "Price"
             }
         ));
-        productTable1.setRowHeight(30);
-        productTable1.setRowMargin(2);
-        productTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        oosTable.setRowHeight(30);
+        oosTable.setRowMargin(2);
+        oosTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                productTable1MouseClicked(evt);
+                oosTableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(productTable1);
+        jScrollPane2.setViewportView(oosTable);
 
         username_Label6.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        username_Label6.setText("Products");
+        username_Label6.setText("Out of Stock");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -332,7 +332,7 @@ public class AdminProducts extends javax.swing.JFrame {
                 .addGap(98, 98, 98)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1192, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,7 +341,7 @@ public class AdminProducts extends javax.swing.JFrame {
                         .addGap(262, 262, 262))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(username_Label6)
-                        .addGap(251, 251, 251))))
+                        .addGap(244, 244, 244))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,7 +388,6 @@ public class AdminProducts extends javax.swing.JFrame {
             if (selectedRowIndex != -1) {
                 String productName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
                 deleteStatement.setString(1, productName);
-                System.out.println(productName);
                 deleteStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Product deleted.");
                 displayProducts();
@@ -411,7 +410,7 @@ public class AdminProducts extends javax.swing.JFrame {
                 String oldProductName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
                 
                 if (nameField.getText().isEmpty() || priceField.getText().isEmpty() || amountField.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(this, "You have to choose a product to update.");
+                    JOptionPane.showMessageDialog(this, "Please enter all required fields.");
                 
                 } else {
                     String counttxt = amountField.getText();
@@ -427,7 +426,7 @@ public class AdminProducts extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "You updated product " + oldProductName);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Güncelleyeceğiniz kullancıyı seçmeniz gerekmektedir");
+                JOptionPane.showMessageDialog(this, "You have to choose a product to update.");
             }
             updateStatement.close();
             displayProducts();
@@ -535,9 +534,9 @@ public class AdminProducts extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_logout_btnlogout_btn
 
-    private void productTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTable1MouseClicked
+    private void oosTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oosTableMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_productTable1MouseClicked
+    }//GEN-LAST:event_oosTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -604,9 +603,9 @@ public class AdminProducts extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logout_btn;
     private javax.swing.JTextField nameField;
+    private javax.swing.JTable oosTable;
     private javax.swing.JTextField priceField;
     private javax.swing.JTable productTable;
-    private javax.swing.JTable productTable1;
     private javax.swing.JButton products_btn;
     private javax.swing.JLabel username_Label;
     private javax.swing.JLabel username_Label1;
@@ -650,5 +649,39 @@ public class AdminProducts extends javax.swing.JFrame {
         selectStatement.close();
         resultSet.close();
 
+    }
+    void displayOutOfStock() throws SQLException{
+         try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        Statement selectStatement = conn.createStatement();
+        String SelectQuery = "SELECT name,count,price FROM products EXCEPT SELECT * FROM products where count<1";
+        ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
+        
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        oosTable.setModel(tableModel);
+        
+        selectStatement.close();
+        resultSet.close();
     }
 }

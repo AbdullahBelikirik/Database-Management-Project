@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     private final String dbPassword = "mudafer69";
     private final String adminUsername = "admin";
     private final String adminPassword = "1234";
+    public static String userName = null;
     /**
      * Creates new form Login
      */
@@ -261,11 +262,12 @@ public class Login extends javax.swing.JFrame {
              
              if(resultSet.first()){
                 message = "Welcome "+username;
+                Login.userName = username;
                 JOptionPane.showMessageDialog(this, message);
                 dispose();
                 java.awt.EventQueue.invokeLater(() -> {
                     try {
-                        new MyAds(username).setVisible(true);
+                        new MyAds().setVisible(true);
                     } catch (SQLException ex) {
                         Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
                     }

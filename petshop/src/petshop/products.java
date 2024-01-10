@@ -298,7 +298,7 @@ public class Products extends javax.swing.JFrame {
         dispose();
         java.awt.EventQueue.invokeLater(() -> {
             try {
-                new MyAds(Profile.username).setVisible(true);
+                new MyAds().setVisible(true);
             } catch (SQLException ex) {
                 Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -308,7 +308,7 @@ public class Products extends javax.swing.JFrame {
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
         try {
             // TODO add your handling code here:
-            new Profile(Profile.username).setVisible(true);
+            new Profile().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);
         }
