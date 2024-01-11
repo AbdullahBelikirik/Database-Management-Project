@@ -706,16 +706,25 @@ public class Profile extends javax.swing.JFrame {
     }
 
     private void displayCount() throws SQLException {
+        String selectIDQuery = "SELECT id FROM users WHERE username = ?";
+        PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
+        selectIDStatement.setString(1, Login.userName);
+        ResultSet idset = selectIDStatement.executeQuery();
+        
+        if (idset.next()) {
+            Profile.userid = idset.getInt("id");
+        }
         String selectQuery = "SELECT count(*) AS total FROM application GROUP BY applicantid HAVING applicantID = ?";
         PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
         selectStatement.setInt(1, Profile.userid);
+        System.out.println(Profile.userid);
         ResultSet resultSet = selectStatement.executeQuery();
         
         int count = 0;
         if (resultSet.next()) {
             count = resultSet.getInt("total");
         }
-        
+        System.out.println(count);
         jLabel15.setText("Your " + String.valueOf(count)+" Ad(s)");
     }
    

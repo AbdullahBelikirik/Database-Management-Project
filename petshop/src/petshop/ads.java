@@ -343,39 +343,54 @@ public class Ads extends javax.swing.JFrame {
 
     private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
         int selectedRowIndex = adTable.getSelectedRow();
-        if (selectedRowIndex != -1) {
-            JOptionPane.showMessageDialog(this, "Please select a ad to apply.");
+        System.out.println(selectedRowIndex);
+
+        if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "Please select an ad to apply.");
         } else {
             try {
                 String selectAppidQuery = "SELECT id FROM users WHERE username = ?";
-                PreparedStatement selectAppidStatement = (PreparedStatement) conn.prepareStatement(selectAppidQuery);
+                PreparedStatement selectAppidStatement = conn.prepareStatement(selectAppidQuery);
                 selectAppidStatement.setString(1, Login.userName);
                 ResultSet appIdSet = selectAppidStatement.executeQuery();
-                int appId = appIdSet.getInt("id");
-                
-                String selectadIDQuery = "SELECT id,userid FROM ad WHERE type = ? AND address = ? AND description = ?";
-                PreparedStatement selectadIDStatement = conn.prepareStatement(selectadIDQuery);
-                selectadIDStatement.setString(1, adTable.getValueAt(selectedRowIndex, 0).toString());
-                selectadIDStatement.setString(2, adTable.getValueAt(selectedRowIndex, 3).toString());
-                selectadIDStatement.setString(3, adTable.getValueAt(selectedRowIndex, 4).toString());
-                ResultSet idSet = selectadIDStatement.executeQuery();
-                int adID = idSet.getInt("id");
-                int refID = idSet.getInt("userid");
-                
-                Date date = new Date(System.currentTimeMillis());
-                String insertQuery = "insert into application(applicantID, referencedID, date, adid) VALUES(?,?,?,?)";
-                PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
-                insertStatement.setInt(1, appId);
-                insertStatement.setInt(2, refID);
-                insertStatement.setDate(3, date);
-                insertStatement.setInt(4, adID);
-                insertStatement.executeUpdate();
-                JOptionPane.showMessageDialog(this, "You applied this ad.");
-                
+
+                // Kontrol et: İlk sonuç setinde bir kayıt var mı?
+                if (appIdSet.next()) {
+                    int appId = appIdSet.getInt("id");
+
+                    String selectadIDQuery = "SELECT id, userid FROM ad WHERE type = ? AND address = ? AND description = ?";
+                    PreparedStatement selectadIDStatement = conn.prepareStatement(selectadIDQuery);
+                    selectadIDStatement.setString(1, adTable.getValueAt(selectedRowIndex, 0).toString());
+                    selectadIDStatement.setString(2, adTable.getValueAt(selectedRowIndex, 3).toString());
+                    selectadIDStatement.setString(3, adTable.getValueAt(selectedRowIndex, 4).toString());
+                    ResultSet idSet = selectadIDStatement.executeQuery();
+
+                    // Kontrol et: İkinci sonuç setinde bir kayıt var mı?
+                    if (idSet.next()) {
+                        int adID = idSet.getInt("id");
+                        int refID = idSet.getInt("userid");
+
+                        Date date = new Date(System.currentTimeMillis());
+                        String insertQuery = "INSERT INTO application(applicantID, referencedID, date, adid) VALUES(?,?,?,?)";
+                        PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
+                        insertStatement.setInt(1, appId);
+                        insertStatement.setInt(2, refID);
+                        insertStatement.setDate(3, date);
+                        insertStatement.setInt(4, adID);
+                        insertStatement.executeUpdate();
+
+                        JOptionPane.showMessageDialog(this, "You applied for this ad.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ad not found.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not found.");
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
     }//GEN-LAST:event_basvur_btnActionPerformed
 
     private void products_btnusers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_products_btnusers_btn
