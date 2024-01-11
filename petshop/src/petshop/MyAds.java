@@ -27,6 +27,7 @@ public class MyAds extends javax.swing.JFrame {
     private final String dbUsername = "postgres";
     private final String dbPassword = "mudafer69";
     Connection conn = null;
+    public static int adID;
     
     public MyAds() throws SQLException {
         initComponents();
@@ -463,8 +464,6 @@ public class MyAds extends javax.swing.JFrame {
 
             int selectedRowIndex = myAdsTable.getSelectedRow();
             if (selectedRowIndex != -1) {
-                
-                
                 if (ageField.getText().isEmpty() || sexField.getText().isEmpty() || typeField.getText().isEmpty() || addressField.getText().isEmpty() || descriptionField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(this, "You have to enter all required fields");
                 
@@ -520,9 +519,6 @@ public class MyAds extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter all required values.");
         } else {
             try {
-        
-                // Existing code...
-
                 String selectQuery = "SELECT id FROM users WHERE username = ?";
                 PreparedStatement selectStatement = (PreparedStatement) conn.prepareStatement(selectQuery);
                 selectStatement.setString(1, Login.userName);
@@ -530,8 +526,7 @@ public class MyAds extends javax.swing.JFrame {
 
                 if (resultSet.next()) {
                     int userId = resultSet.getInt("id");
-                    System.out.println(userId);
-
+                    
                     String insertQuery = "INSERT INTO ad (address, description, age, sex, type, date, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
                     String ageText = ageField.getText();
@@ -550,9 +545,6 @@ public class MyAds extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "User not found.");
                 }
 
-// Existing code...
-
-              //  displayMyAds();
             } catch (SQLException ex) {
                 Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -574,10 +566,31 @@ public class MyAds extends javax.swing.JFrame {
     }//GEN-LAST:event_profile_btnActionPerformed
 
     private void detail_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detail_buttonActionPerformed
-        // TODO add your handling code here:
-	    java.awt.EventQueue.invokeLater(() -> {
-                new detail().setVisible(true);
-	    });
+        int selectedRowIndex = myAdsTable.getSelectedRow();
+         if (selectedRowIndex != -1) {
+            try {
+                String selectIDQuery = "SELECT id FROM ad WHERE type = ? AND address = ? AND description = ?";
+                PreparedStatement selectIDStatement = conn.prepareStatement(selectIDQuery);
+                selectIDStatement.setString(1, myAdsTable.getValueAt(selectedRowIndex, 0).toString());
+                selectIDStatement.setString(2, myAdsTable.getValueAt(selectedRowIndex, 3).toString());
+                selectIDStatement.setString(3, myAdsTable.getValueAt(selectedRowIndex, 4).toString());
+                ResultSet idSet = selectIDStatement.executeQuery();
+                MyAds.adID = idSet.getInt("id");
+                
+                java.awt.EventQueue.invokeLater(() -> {
+                    try {
+                        new Detail().setVisible(true);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                });
+            } catch (SQLException ex) {
+                Logger.getLogger(MyAds.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         }
+        else {
+                JOptionPane.showMessageDialog(this, "You have to choose a ad to see details.");
+         }
     }//GEN-LAST:event_detail_buttonActionPerformed
 
     /**

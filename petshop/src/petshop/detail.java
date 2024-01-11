@@ -4,17 +4,31 @@
  */
 package petshop;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MSI-NB
  */
-public class detail extends javax.swing.JFrame {
-
+public class Detail extends javax.swing.JFrame {
+    private final String dbUrl = "jdbc:postgresql://localhost/petset";
+    private final String dbUsername = "postgres";
+    private final String dbPassword = "mudafer69";
+    Connection conn = null;
     /**
      * Creates new form detail
      */
-    public detail() {
+    public Detail() throws SQLException {
         initComponents();
+        displayApplications();
     }
 
     /**
@@ -149,20 +163,25 @@ public class detail extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Detail.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new detail().setVisible(true);
+                try {
+                    new Detail().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Detail.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -175,4 +194,41 @@ public class detail extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private void displayApplications() throws SQLException {
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        String selectQuery = "SELECT u.name, u.surname, u.address, u.telNo FROM application as a, users as u WHERE a.adid = ? AND a.referencedID = u.ID";
+        PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+        selectStatement.setInt(1, MyAds.adID);
+        ResultSet resultSet = selectStatement.executeQuery();
+        
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+        
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+        
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+        
+        detailTable.setModel(tableModel);
+        
+        selectStatement.close();
+        resultSet.close();
+    }
 }
+
