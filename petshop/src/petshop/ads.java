@@ -5,6 +5,7 @@
 package petshop;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -49,7 +50,7 @@ public class Ads extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         adTable = new javax.swing.JTable();
         jLabel15 = new javax.swing.JLabel();
-        basvur_btn = new javax.swing.JButton();
+        listele_btn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         products_btn = new javax.swing.JButton();
         ads_btn = new javax.swing.JButton();
@@ -64,7 +65,7 @@ public class Ads extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         surname_Label = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        basvur_btn1 = new javax.swing.JButton();
+        basvur_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,14 +94,14 @@ public class Ads extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Imprint MT Shadow", 1, 25)); // NOI18N
         jLabel15.setText("ILANLAR");
 
-        basvur_btn.setBackground(new java.awt.Color(255, 204, 204));
-        basvur_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        basvur_btn.setText("LISTELE");
-        basvur_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        basvur_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        basvur_btn.addActionListener(new java.awt.event.ActionListener() {
+        listele_btn.setBackground(new java.awt.Color(255, 204, 204));
+        listele_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        listele_btn.setText("LISTELE");
+        listele_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        listele_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        listele_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                basvur_btnActionPerformed(evt);
+                listele_btnActionPerformed(evt);
             }
         });
 
@@ -229,14 +230,14 @@ public class Ads extends javax.swing.JFrame {
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         surname_Label.setText("Hayvan Türü");
 
-        basvur_btn1.setBackground(new java.awt.Color(255, 204, 204));
-        basvur_btn1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        basvur_btn1.setText("BASVUR");
-        basvur_btn1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        basvur_btn1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        basvur_btn1.addActionListener(new java.awt.event.ActionListener() {
+        basvur_btn.setBackground(new java.awt.Color(255, 204, 204));
+        basvur_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
+        basvur_btn.setText("BASVUR");
+        basvur_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        basvur_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        basvur_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                basvur_btn1ActionPerformed(evt);
+                basvur_btnActionPerformed(evt);
             }
         });
 
@@ -257,7 +258,7 @@ public class Ads extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(191, 191, 191)
-                        .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(listele_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(83, 83, 83))
@@ -268,7 +269,7 @@ public class Ads extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(496, 496, 496)
-                    .addComponent(basvur_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(514, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -287,12 +288,12 @@ public class Ads extends javax.swing.JFrame {
                             .addComponent(surname_Label)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43)
-                        .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(listele_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(266, 266, 266))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addContainerGap(608, Short.MAX_VALUE)
-                    .addComponent(basvur_btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(basvur_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(127, 127, 127)))
         );
 
@@ -304,7 +305,7 @@ public class Ads extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_adTableMouseClicked
 
-    private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
+    private void listele_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listele_btnActionPerformed
         try {
             String selectedType = (String) jComboBox1.getSelectedItem();
             PreparedStatement preparedStatement = null;
@@ -338,11 +339,44 @@ public class Ads extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Ads.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_basvur_btnActionPerformed
+    }//GEN-LAST:event_listele_btnActionPerformed
 
-    private void basvur_btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btn1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_basvur_btn1ActionPerformed
+    private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
+        int selectedRowIndex = adTable.getSelectedRow();
+        if (selectedRowIndex != -1) {
+            JOptionPane.showMessageDialog(this, "Please select a ad to apply.");
+        } else {
+            try {
+                String selectAppidQuery = "SELECT id FROM users WHERE username = ?";
+                PreparedStatement selectAppidStatement = (PreparedStatement) conn.prepareStatement(selectAppidQuery);
+                selectAppidStatement.setString(1, Login.userName);
+                ResultSet appIdSet = selectAppidStatement.executeQuery();
+                int appId = appIdSet.getInt("id");
+                
+                String selectadIDQuery = "SELECT id,userid FROM ad WHERE type = ? AND address = ? AND description = ?";
+                PreparedStatement selectadIDStatement = conn.prepareStatement(selectadIDQuery);
+                selectadIDStatement.setString(1, adTable.getValueAt(selectedRowIndex, 0).toString());
+                selectadIDStatement.setString(2, adTable.getValueAt(selectedRowIndex, 3).toString());
+                selectadIDStatement.setString(3, adTable.getValueAt(selectedRowIndex, 4).toString());
+                ResultSet idSet = selectadIDStatement.executeQuery();
+                int adID = idSet.getInt("id");
+                int refID = idSet.getInt("userid");
+                
+                Date date = new Date(System.currentTimeMillis());
+                String insertQuery = "insert into application(applicantID, referencedID, date, adid) VALUES(?,?,?,?)";
+                PreparedStatement insertStatement = (PreparedStatement) conn.prepareStatement(insertQuery);
+                insertStatement.setInt(1, appId);
+                insertStatement.setInt(2, refID);
+                insertStatement.setDate(3, date);
+                insertStatement.setInt(4, adID);
+                insertStatement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "You applied this ad.");
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_basvur_btnActionPerformed
 
     private void products_btnusers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_products_btnusers_btn
         // TODO add your handling code here:
@@ -508,7 +542,6 @@ void fillComboBoxWithData() {
     private javax.swing.JTable adTable;
     private javax.swing.JButton ads_btn;
     private javax.swing.JButton basvur_btn;
-    private javax.swing.JButton basvur_btn1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
@@ -519,6 +552,7 @@ void fillComboBoxWithData() {
     private javax.swing.JLabel jLabel52;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton listele_btn;
     private javax.swing.JButton logout_btn;
     private javax.swing.JButton myads_btn;
     private javax.swing.JButton products_btn;
