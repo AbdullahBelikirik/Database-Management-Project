@@ -5,13 +5,16 @@
 package petshop;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -181,11 +184,8 @@ public class Products extends javax.swing.JFrame {
                         .addComponent(jLabel52)
                         .addGap(145, 145, 145)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel49, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,9 +203,9 @@ public class Products extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(profile_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -265,7 +265,57 @@ public class Products extends javax.swing.JFrame {
     }//GEN-LAST:event_productTableMouseClicked
 
     private void basvur_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_basvur_btnActionPerformed
-        
+        int selectedRowIndex = productTable.getSelectedRow();
+        System.out.println(selectedRowIndex);
+
+        if (selectedRowIndex == -1) {
+            JOptionPane.showMessageDialog(this, "Please select a product to purchase.");
+        } else {
+            try {
+                String selectAppidQuery = "SELECT id FROM users WHERE username = ?";
+                PreparedStatement selectAppidStatement = conn.prepareStatement(selectAppidQuery);
+                selectAppidStatement.setString(1, Login.userName);
+                ResultSet appIdSet = selectAppidStatement.executeQuery();
+
+                // Kontrol et: İlk sonuç setinde bir kayıt var mı?
+                if (appIdSet.next()) {
+                    int appId = appIdSet.getInt("id");
+
+                    String selectadIDQuery = "SELECT id FROM products WHERE name = ?";
+                    PreparedStatement selectadIDStatement = conn.prepareStatement(selectadIDQuery);
+                    selectadIDStatement.setString(1, productTable.getValueAt(selectedRowIndex, 1).toString());
+                    ResultSet idSet = selectadIDStatement.executeQuery();
+
+                    // Kontrol et: İkinci sonuç setinde bir kayıt var mı?
+                    if (idSet.next()) {
+                        int productID = idSet.getInt("id");
+                        
+                        Date date = new Date(System.currentTimeMillis());
+                        String insertQuery = "INSERT INTO orders(productID, customerID, date) VALUES(?,?,?)";
+                        PreparedStatement insertStatement = conn.prepareStatement(insertQuery);
+                        insertStatement.setInt(1, productID);
+                        insertStatement.setInt(2, appId);
+                        insertStatement.setDate(3, date);
+                        insertStatement.executeUpdate();
+
+                        
+                        String sql = "UPDATE Products SET count = count - 1 WHERE ID = ?";
+                        PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                        preparedStatement.setInt(1, productID);
+                        preparedStatement.executeUpdate();
+                        displayProducts();
+                        JOptionPane.showMessageDialog(this, "Your order has been received");
+                        
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Product is not found.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(this, "User not found.");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_basvur_btnActionPerformed
 
@@ -391,7 +441,7 @@ public class Products extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        String SelectQuery = "Select count,name,price from products";
+        String SelectQuery = "Select count,name,price from products WHERE count>0";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();

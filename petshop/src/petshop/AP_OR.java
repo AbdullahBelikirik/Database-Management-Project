@@ -29,7 +29,8 @@ public class AP_OR extends javax.swing.JFrame {
      */
     public AP_OR() throws SQLException {
         initComponents();
-        displayProducts();
+        displayApplications();
+        displayOrders();
     }
 
     /**
@@ -184,9 +185,9 @@ public class AP_OR extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(users_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(apandor_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -446,7 +447,7 @@ public class AP_OR extends javax.swing.JFrame {
     private javax.swing.JButton users_btn;
     // End of variables declaration//GEN-END:variables
 
-    private void displayProducts() throws SQLException {
+    private void displayApplications() throws SQLException {
         try {
             conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {
@@ -454,7 +455,7 @@ public class AP_OR extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        String SelectQuery = "SELECT name,count,price FROM get_all_products()";
+        String SelectQuery = "SELECT application.adID, application.referencedID, application.date FROM application ";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();
@@ -478,6 +479,35 @@ public class AP_OR extends javax.swing.JFrame {
         applicationsTable.setModel(tableModel);
         
         selectStatement.close();
+        resultSet.close();
+
+    }
+    private void displayOrders() throws SQLException {
+        try {
+            conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        
+        ResultSet resultSet;
+        try (Statement selectStatement = conn.createStatement()) {
+            String SelectQuery = "SELECT id, customerid, productid, date FROM orders ";
+            resultSet = selectStatement.executeQuery(SelectQuery);
+            ResultSetMetaData metaData = resultSet.getMetaData();
+            int columnCount = metaData.getColumnCount();
+            String[] columnNames = new String[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                columnNames[i - 1] = metaData.getColumnName(i);
+            }   DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+            Object[] row ;
+            while (resultSet.next()) {
+                row = new Object[columnCount];
+                for (int i = 1; i <= columnCount; i++) {
+                    row[i - 1] = resultSet.getObject(i);
+                }
+                tableModel.addRow(row);
+            }   ordersTable.setModel(tableModel);
+        }
         resultSet.close();
 
     }

@@ -446,8 +446,8 @@ public class MyAds extends javax.swing.JFrame {
                 deleteStatement.setString(2, myAdsTable.getValueAt(selectedRowIndex, 3).toString());
                 deleteStatement.setString(3, myAdsTable.getValueAt(selectedRowIndex, 4).toString());
                 deleteStatement.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Your ad deleted.");
-                displayMyAds();
+                JOptionPane.showMessageDialog(this, "Your ad deleted. \nDue to deletion, current applications on this ad has been deleted as well");
+                displayMyAds(); 
             } else {
                 JOptionPane.showMessageDialog(this, "You have to choose a ad to delete.");
             }
@@ -544,7 +544,7 @@ public class MyAds extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "User not found.");
                 }
-
+            displayMyAds();
             } catch (SQLException ex) {
                 Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
             }

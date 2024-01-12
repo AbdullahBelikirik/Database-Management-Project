@@ -637,14 +637,14 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JLabel username_Label;
     // End of variables declaration//GEN-END:variables
 
-    private void displayProfile() throws SQLException { 
+    private void displayProfile() throws SQLException {     
         try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
             
       String getUserFunction = "{call get_user_by_name(?)}";
     try (CallableStatement getUserStatement = conn.prepareCall(getUserFunction)) {
         getUserStatement.setString(1, Login.userName);
         getUserStatement.execute();
-
+       
         ResultSet resultSet = getUserStatement.getResultSet();
 
         if (resultSet != null && resultSet.next()) {
