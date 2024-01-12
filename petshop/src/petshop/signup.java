@@ -45,10 +45,10 @@ public class SignUp extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         phonenumber_Label = new javax.swing.JLabel();
         address_Label = new javax.swing.JLabel();
-        phonenumberField = new javax.swing.JTextField();
-        surnameField = new javax.swing.JTextField();
         addressField = new javax.swing.JTextField();
-        usernameField2 = new javax.swing.JTextField();
+        nameField = new javax.swing.JTextField();
+        surnameField = new javax.swing.JTextField();
+        phonenumberField = new javax.swing.JTextField();
         usernameField3 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -86,10 +86,10 @@ public class SignUp extends javax.swing.JFrame {
         });
 
         password_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        password_Label.setText("Password");
+        password_Label.setText("Surname");
 
         surname_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        surname_Label.setText("Surname");
+        surname_Label.setText("Password");
 
         passwordField.setBackground(new java.awt.Color(245, 245, 245));
         passwordField.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,14 @@ public class SignUp extends javax.swing.JFrame {
         address_Label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         address_Label.setText("Address");
 
-        phonenumberField.setBackground(new java.awt.Color(245, 245, 245));
+        addressField.setBackground(new java.awt.Color(245, 245, 245));
+
+        nameField.setBackground(new java.awt.Color(245, 245, 245));
+        nameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nameFieldActionPerformed(evt);
+            }
+        });
 
         surnameField.setBackground(new java.awt.Color(245, 245, 245));
         surnameField.addActionListener(new java.awt.event.ActionListener() {
@@ -113,17 +120,10 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        addressField.setBackground(new java.awt.Color(245, 245, 245));
-        addressField.addActionListener(new java.awt.event.ActionListener() {
+        phonenumberField.setBackground(new java.awt.Color(245, 245, 245));
+        phonenumberField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressFieldActionPerformed(evt);
-            }
-        });
-
-        usernameField2.setBackground(new java.awt.Color(245, 245, 245));
-        usernameField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameField2ActionPerformed(evt);
+                phonenumberFieldActionPerformed(evt);
             }
         });
 
@@ -157,12 +157,12 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(name_Label)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(surnameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usernameField3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(surnameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addressField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phonenumberField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(phonenumberField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(46, 46, 46))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -185,15 +185,15 @@ public class SignUp extends javax.swing.JFrame {
                         .addGap(20, 20, 20)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(password_Label)
-                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(address_Label)
-                            .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(name_Label))))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -201,7 +201,7 @@ public class SignUp extends javax.swing.JFrame {
                         .addComponent(phonenumber_Label))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(usernameField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(phonenumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(signup_btn)
                 .addGap(32, 32, 32))
@@ -285,12 +285,12 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        String userName = surnameField.getText();
-        String name = phonenumberField.getText();
-        String surname = surnameField.getText();
+        String userName = nameField.getText();
+        String name = addressField.getText();
+        String surname = nameField.getText();
         String password = passwordField.getText();
-        String address = addressField.getText();
-        String phoneNumber = phonenumberField.getText();
+        String address = surnameField.getText();
+        String phoneNumber = addressField.getText();
         
         if(userName.isBlank() || name.isBlank() || surname.isBlank() || password.isBlank() || address.isBlank() || phoneNumber.isBlank()){
             JOptionPane.showMessageDialog(this, "Please enter all required values.");
@@ -321,7 +321,7 @@ public class SignUp extends javax.swing.JFrame {
                 insertStatement.executeUpdate();
             }
             else{
-                surnameField.setText("");
+                nameField.setText("");
                 JOptionPane.showMessageDialog(null, "This username already exist.");
             }
             JOptionPane.showMessageDialog(null, "Successful Login.");
@@ -331,6 +331,7 @@ public class SignUp extends javax.swing.JFrame {
             java.awt.EventQueue.invokeLater(() -> {
                 new Login().setVisible(true);
             });
+            dispose();
         }
 
     }//GEN-LAST:event_signup_btnActionPerformed
@@ -348,17 +349,17 @@ public class SignUp extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jButton1close_btnActionPerformed
 
+    private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameFieldActionPerformed
+
     private void surnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_surnameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_surnameFieldActionPerformed
 
-    private void addressFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressFieldActionPerformed
+    private void phonenumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phonenumberFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressFieldActionPerformed
-
-    private void usernameField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameField2ActionPerformed
+    }//GEN-LAST:event_phonenumberFieldActionPerformed
 
     private void usernameField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameField3ActionPerformed
         // TODO add your handling code here:
@@ -410,6 +411,7 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JTextField nameField;
     private javax.swing.JLabel name_Label;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel password_Label;
@@ -419,7 +421,6 @@ public class SignUp extends javax.swing.JFrame {
     private javax.swing.JButton signup_btn;
     private javax.swing.JTextField surnameField;
     private javax.swing.JLabel surname_Label;
-    private javax.swing.JTextField usernameField2;
     private javax.swing.JTextField usernameField3;
     private javax.swing.JLabel username_Label;
     // End of variables declaration//GEN-END:variables

@@ -298,7 +298,9 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_password_fieldActionPerformed
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(() -> {
+            new SignUp().setVisible(true);
+        });
     }//GEN-LAST:event_signup_btnActionPerformed
 
     /**

@@ -725,7 +725,7 @@ public class Profile extends javax.swing.JFrame {
             count = resultSet.getInt("total");
         }
         System.out.println(count);
-        jLabel15.setText("Your " + String.valueOf(count)+" Ad(s)");
+        jLabel15.setText("Your " + String.valueOf(count)+" Application(s)");
     }
    
 }
