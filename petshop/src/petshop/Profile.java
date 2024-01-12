@@ -42,6 +42,7 @@ public class Profile extends javax.swing.JFrame {
         displayProfile();
         displayCount();
         displayMyApplications();
+        displayMyOrders();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +84,7 @@ public class Profile extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        applicationsTable1 = new javax.swing.JTable();
+        ordersTable = new javax.swing.JTable();
         phonenumber_Label1 = new javax.swing.JLabel();
 
         edit_btn1.setBackground(new java.awt.Color(255, 204, 204));
@@ -315,9 +316,9 @@ public class Profile extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Imprint MT Shadow", 1, 25)); // NOI18N
         jLabel16.setText("Siparislerim");
 
-        applicationsTable1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        applicationsTable1.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
-        applicationsTable1.setModel(new javax.swing.table.DefaultTableModel(
+        ordersTable.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        ordersTable.setFont(new java.awt.Font("UD Digi Kyokasho NP-R", 0, 25)); // NOI18N
+        ordersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -328,14 +329,14 @@ public class Profile extends javax.swing.JFrame {
                 "Type", "Age", "Gender", "Address", "Description"
             }
         ));
-        applicationsTable1.setRowHeight(30);
-        applicationsTable1.setRowMargin(2);
-        applicationsTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+        ordersTable.setRowHeight(30);
+        ordersTable.setRowMargin(2);
+        ordersTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                applicationsTable1MouseClicked(evt);
+                ordersTableMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(applicationsTable1);
+        jScrollPane2.setViewportView(ordersTable);
 
         phonenumber_Label1.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
         phonenumber_Label1.setText("Phone Number");
@@ -557,9 +558,9 @@ public class Profile extends javax.swing.JFrame {
         });
     }//GEN-LAST:event_logout_btnlogout_btn
 
-    private void applicationsTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_applicationsTable1MouseClicked
+    private void ordersTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ordersTableMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_applicationsTable1MouseClicked
+    }//GEN-LAST:event_ordersTableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -606,7 +607,6 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JLabel address_Label;
     private javax.swing.JButton ads_btn;
     private javax.swing.JTable applicationsTable;
-    private javax.swing.JTable applicationsTable1;
     private javax.swing.JLabel countLabel;
     private javax.swing.JButton edit_btn;
     private javax.swing.JButton edit_btn1;
@@ -625,6 +625,7 @@ public class Profile extends javax.swing.JFrame {
     private javax.swing.JButton myads_btn;
     private javax.swing.JTextField nameField;
     private javax.swing.JLabel name_Label;
+    private javax.swing.JTable ordersTable;
     private javax.swing.JTextField passwordField;
     private javax.swing.JLabel password_Label;
     private javax.swing.JTextField phonenumberField;
@@ -724,8 +725,37 @@ public class Profile extends javax.swing.JFrame {
         if (resultSet.next()) {
             count = resultSet.getInt("total");
         }
-        System.out.println(count);
         jLabel15.setText("Your " + String.valueOf(count)+" Application(s)");
+    }
+
+    private void displayMyOrders() throws SQLException {
+        String selectQuery = "SELECT p.name, p.price, o.date FROM orders as o, products as p WHERE o.customerID = ? AND p.id = o.productID";
+        PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
+        selectStatement.setInt(1, Profile.userid);
+        ResultSet resultSet = selectStatement.executeQuery();
+
+        ResultSetMetaData metaData = resultSet.getMetaData();
+        int columnCount = metaData.getColumnCount();
+        String[] columnNames = new String[columnCount];
+        for (int i = 1; i <= columnCount; i++) {
+            columnNames[i - 1] = metaData.getColumnName(i);
+        }
+
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+        Object[] row ;
+
+        while (resultSet.next()) {
+            row = new Object[columnCount];
+            for (int i = 1; i <= columnCount; i++) {
+                row[i - 1] = resultSet.getObject(i);
+            }
+            tableModel.addRow(row);
+        }
+
+        ordersTable.setModel(tableModel);
+
+        selectStatement.close();
+        resultSet.close();
     }
    
 }
