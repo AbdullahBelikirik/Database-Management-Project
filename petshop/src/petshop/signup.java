@@ -324,7 +324,7 @@ public class SignUp extends javax.swing.JFrame {
                 nameField.setText("");
                 JOptionPane.showMessageDialog(null, "This username already exist.");
             }
-            JOptionPane.showMessageDialog(null, "Successful Login.");
+            JOptionPane.showMessageDialog(null, "Successful sign up.");
             } catch (SQLException ex) {
             Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
             }

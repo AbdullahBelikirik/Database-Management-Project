@@ -454,7 +454,7 @@ public class Profile extends javax.swing.JFrame {
             Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
-            String updateQuery = "Update users Set username = ? , name = ?, surname = ?, password = ?, address = ?, telno = ? where name = ?";
+            String updateQuery = "Update users Set username = ? , name = ?, surname = ?, password = ?, address = ?, telno = ? where username = ?";
             PreparedStatement updateStatement = (PreparedStatement) conn.prepareStatement(updateQuery);
 
             if (nameField.getText().isEmpty() || usernameField.getText().isEmpty() || surnameField.getText().isEmpty() || passwordField.getText().isEmpty() || addressField.getText().isEmpty() || phonenumberField.getText().isEmpty()) {
@@ -645,7 +645,7 @@ public class Profile extends javax.swing.JFrame {
     try (CallableStatement getUserStatement = conn.prepareCall(getUserFunction)) {
         getUserStatement.setString(1, Login.userName);
         getUserStatement.execute();
-       
+        System.out.println();
         ResultSet resultSet = getUserStatement.getResultSet();
 
         if (resultSet != null && resultSet.next()) {

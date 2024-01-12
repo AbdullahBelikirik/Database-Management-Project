@@ -143,7 +143,7 @@ public class Detail extends javax.swing.JFrame {
 
     private void jButton1close_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1close_btnActionPerformed
         dispose();
-        System.exit(0);
+       
     }//GEN-LAST:event_jButton1close_btnActionPerformed
 
     /**

@@ -455,7 +455,7 @@ public class AP_OR extends javax.swing.JFrame {
         }
         
         Statement selectStatement = conn.createStatement();
-        String SelectQuery = "SELECT application.adID, application.referencedID, application.date FROM application ";
+        String SelectQuery = "SELECT application.adID, application.referencedID,application.applicantid, application.date FROM application ";
         ResultSet resultSet = selectStatement.executeQuery(SelectQuery);
         
         ResultSetMetaData metaData = resultSet.getMetaData();

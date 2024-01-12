@@ -576,6 +576,7 @@ public class MyAds extends javax.swing.JFrame {
                 selectIDStatement.setString(2, myAdsTable.getValueAt(selectedRowIndex, 3).toString());
                 selectIDStatement.setString(3, myAdsTable.getValueAt(selectedRowIndex, 4).toString());
                 ResultSet idSet = selectIDStatement.executeQuery();
+                idSet.next();
                 MyAds.adID = idSet.getInt("id");
                 
                 java.awt.EventQueue.invokeLater(() -> {

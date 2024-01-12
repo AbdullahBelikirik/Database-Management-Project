@@ -520,6 +520,7 @@ public class AdminProducts extends javax.swing.JFrame {
     }//GEN-LAST:event_users_btnbilling_btn
 
     private void apandor_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apandor_btnActionPerformed
+        dispose();
         try {
             // TODO add your handling code here:
             new AP_OR().setVisible(true);
