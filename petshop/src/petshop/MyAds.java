@@ -540,7 +540,7 @@ public class MyAds extends javax.swing.JFrame {
                     insertStatement.setInt(7, userId);
 
                     insertStatement.executeUpdate();
-                    JOptionPane.showMessageDialog(this, "Hayvan Eklendi");
+                    JOptionPane.showMessageDialog(this, "Added ad.");
                 } else {
                     JOptionPane.showMessageDialog(this, "User not found.");
                 }
@@ -557,6 +557,7 @@ public class MyAds extends javax.swing.JFrame {
     }//GEN-LAST:event_typeFieldActionPerformed
 
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
+        dispose();
         try {
             // TODO add your handling code here:
             new Profile().setVisible(true);

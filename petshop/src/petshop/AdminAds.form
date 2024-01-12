@@ -261,7 +261,7 @@
                   <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="products_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="ads_btn" alignment="1" min="-2" pref="80" max="-2" attributes="0"/>
                               <Component id="users_btn" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>

@@ -212,9 +212,9 @@ public class AdminAds extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(products_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(ads_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ads_btn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(users_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(apandor_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(logout_btn, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -305,7 +305,24 @@ public class AdminAds extends javax.swing.JFrame {
     }//GEN-LAST:event_adsTableMouseClicked
 
     private void delete_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_btnActionPerformed
-        // TODO add your handling code here:
+        try {
+            PreparedStatement deleteStatement = (PreparedStatement) conn.prepareStatement("delete from ad where type = ? AND address = ? AND description = ?");
+            
+            int selectedRowIndex = adsTable.getSelectedRow();
+            if (selectedRowIndex != -1) {
+                deleteStatement.setString(1, adsTable.getValueAt(selectedRowIndex, 0).toString());
+                deleteStatement.setString(2, adsTable.getValueAt(selectedRowIndex, 3).toString());
+                deleteStatement.setString(3, adsTable.getValueAt(selectedRowIndex, 4).toString());
+                deleteStatement.executeUpdate();
+                JOptionPane.showMessageDialog(this, "Your ad deleted. \nDue to deletion, current applications on this ad has been deleted as well");
+                displayAds(); 
+            } else {
+                JOptionPane.showMessageDialog(this, "You have to choose a ad to delete.");
+            }
+            deleteStatement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminProducts.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_delete_btnActionPerformed
 
     private void products_btnusers_btn(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_products_btnusers_btn

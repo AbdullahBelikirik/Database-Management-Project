@@ -356,8 +356,8 @@ public class Products extends javax.swing.JFrame {
     }//GEN-LAST:event_myads_btnbilling_btn
 
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
+        dispose();
         try {
-            // TODO add your handling code here:
             new Profile().setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(Products.class.getName()).log(Level.SEVERE, null, ex);

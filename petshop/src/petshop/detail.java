@@ -207,6 +207,7 @@ public class Detail extends javax.swing.JFrame {
         selectStatement.setInt(1, MyAds.adID);
         ResultSet resultSet = selectStatement.executeQuery();
         
+        resultSet.next();
         ResultSetMetaData metaData = resultSet.getMetaData();
         int columnCount = metaData.getColumnCount();
         String[] columnNames = new String[columnCount];

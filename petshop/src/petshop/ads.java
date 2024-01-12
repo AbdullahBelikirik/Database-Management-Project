@@ -309,7 +309,7 @@ public class Ads extends javax.swing.JFrame {
         try {
             String selectedType = (String) jComboBox1.getSelectedItem();
             PreparedStatement preparedStatement = null;
-            String selectQuery = "SELECT * FROM ad WHERE type = ?";
+            String selectQuery = "SELECT type,age,sex,address,description FROM ad WHERE type = ?";
             preparedStatement = conn.prepareStatement(selectQuery);
             preparedStatement.setString(1, selectedType);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -354,7 +354,6 @@ public class Ads extends javax.swing.JFrame {
                 selectAppidStatement.setString(1, Login.userName);
                 ResultSet appIdSet = selectAppidStatement.executeQuery();
 
-                // Kontrol et: İlk sonuç setinde bir kayıt var mı?
                 if (appIdSet.next()) {
                     int appId = appIdSet.getInt("id");
 
@@ -365,7 +364,6 @@ public class Ads extends javax.swing.JFrame {
                     selectadIDStatement.setString(3, adTable.getValueAt(selectedRowIndex, 4).toString());
                     ResultSet idSet = selectadIDStatement.executeQuery();
 
-                    // Kontrol et: İkinci sonuç setinde bir kayıt var mı?
                     if (idSet.next()) {
                         int adID = idSet.getInt("id");
                         int refID = idSet.getInt("userid");
@@ -430,6 +428,7 @@ public class Ads extends javax.swing.JFrame {
     }//GEN-LAST:event_myads_btnbilling_btn
 
     private void profile_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profile_btnActionPerformed
+        dispose();
         try {
             // TODO add your handling code here:
             new Profile().setVisible(true);
@@ -534,13 +533,11 @@ void fillComboBoxWithData() {
 ) {
                 ResultSet resultSet = selectStatement.executeQuery();
                 
-                // Benzersiz tipleri bir Set'e ekleyelim
                 Set<String> uniqueTypes = new HashSet<>();
                 while (resultSet.next()) {
                     uniqueTypes.add(resultSet.getString("type"));
                 }
 
-                // Set'teki tipleri JComboBox'a ekleyelim
                 for (String type : uniqueTypes) {
                     jComboBox1.addItem(type);
                 }
