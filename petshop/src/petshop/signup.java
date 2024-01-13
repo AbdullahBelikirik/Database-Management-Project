@@ -76,7 +76,7 @@ public class SignUp extends javax.swing.JFrame {
 
         signup_btn.setBackground(new java.awt.Color(245, 171, 198));
         signup_btn.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        signup_btn.setText("Kayıt ol");
+        signup_btn.setText("Sign up!");
         signup_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         signup_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup_btn.addActionListener(new java.awt.event.ActionListener() {

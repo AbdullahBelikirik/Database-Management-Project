@@ -60,10 +60,10 @@ public class Login extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(246, 242, 242));
 
         jLabel2.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel2.setText("Parola ");
+        jLabel2.setText("Password");
 
         jLabel4.setFont(new java.awt.Font("Tempus Sans ITC", 1, 22)); // NOI18N
-        jLabel4.setText("Kullanıcı Adı ");
+        jLabel4.setText("Username");
 
         username_field.setBackground(new java.awt.Color(245, 245, 245));
 
@@ -76,7 +76,7 @@ public class Login extends javax.swing.JFrame {
 
         login_btn.setBackground(new java.awt.Color(245, 171, 198));
         login_btn.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        login_btn.setText("Giris Yap");
+        login_btn.setText("Log in");
         login_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         login_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         login_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,11 +85,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("hesabın yok mu?");
+        jLabel1.setText("don't you have an account?");
 
         signup_btn.setBackground(new java.awt.Color(245, 171, 198));
         signup_btn.setFont(new java.awt.Font("Imprint MT Shadow", 1, 20)); // NOI18N
-        signup_btn.setText("Kayıt ol");
+        signup_btn.setText("Sign up");
         signup_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         signup_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signup_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -109,20 +109,20 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(password_field, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(337, Short.MAX_VALUE)
+                .addContainerGap(343, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(308, 308, 308))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(346, 346, 346))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(login_btn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(signup_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE))
-                        .addGap(330, 330, 330))))
+                            .addComponent(signup_btn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(330, 330, 330))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(359, 359, 359))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(362, 362, 362))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

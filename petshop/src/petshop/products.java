@@ -90,7 +90,7 @@ public class Products extends javax.swing.JFrame {
 
         basvur_btn.setBackground(new java.awt.Color(255, 204, 204));
         basvur_btn.setFont(new java.awt.Font("Tempus Sans ITC", 1, 20)); // NOI18N
-        basvur_btn.setText("SATIN AL");
+        basvur_btn.setText("BUY");
         basvur_btn.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         basvur_btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         basvur_btn.addActionListener(new java.awt.event.ActionListener() {
