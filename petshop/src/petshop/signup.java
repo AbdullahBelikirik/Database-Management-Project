@@ -285,7 +285,7 @@ public class SignUp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void signup_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signup_btnActionPerformed
-        String userName = nameField.getText();
+        String userName = usernameField3.getText();
         String name = addressField.getText();
         String surname = nameField.getText();
         String password = passwordField.getText();
