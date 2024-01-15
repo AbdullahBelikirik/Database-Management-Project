@@ -29,7 +29,7 @@ public class Profile extends javax.swing.JFrame {
     
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     private static int userid;
  
     Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);

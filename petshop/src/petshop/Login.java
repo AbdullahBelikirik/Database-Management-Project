@@ -20,7 +20,7 @@ public class Login extends javax.swing.JFrame {
 
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     private final String adminUsername = "admin";
     private final String adminPassword = "1234";
     public static String userName = null;

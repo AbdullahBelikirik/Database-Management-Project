@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class Users extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     Connection conn = null;
     /**
      * Creates new form ads
@@ -324,6 +324,7 @@ public class Users extends javax.swing.JFrame {
     }//GEN-LAST:event_users_btnbilling_btn
 
     private void apandor_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apandor_btnActionPerformed
+        dispose();
         try {
             // TODO add your handling code here:
             new AP_OR().setVisible(true);

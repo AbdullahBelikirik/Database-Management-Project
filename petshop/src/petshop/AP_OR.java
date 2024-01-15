@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class AP_OR extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     Connection conn;
     /**
      * Creates new form my_ads

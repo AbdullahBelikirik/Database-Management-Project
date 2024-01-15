@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class AdminProducts extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     Connection conn;
     /**
      * Creates new form my_ads
@@ -387,7 +387,7 @@ public class AdminProducts extends javax.swing.JFrame {
             
             int selectedRowIndex = productTable.getSelectedRow();
             if (selectedRowIndex != -1) {
-                String productName = (String) productTable.getValueAt(selectedRowIndex, 1).toString();
+                String productName = (String) productTable.getValueAt(selectedRowIndex, 0).toString();
                 deleteStatement.setString(1, productName);
                 deleteStatement.executeUpdate();
                 JOptionPane.showMessageDialog(this, "Product deleted.");

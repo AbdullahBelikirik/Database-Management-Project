@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class Detail extends javax.swing.JFrame {
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     Connection conn = null;
     /**
      * Creates new form detail
@@ -200,7 +200,7 @@ public class Detail extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
         
-        String selectQuery = "SELECT u.name, u.surname, u.address, u.telNo FROM application as a, users as u WHERE a.adid = ? AND a.referencedID = u.ID";
+        String selectQuery = "SELECT u.name, u.surname, u.address, u.telNo FROM application as a, users as u WHERE a.adid = ? AND a.applicantID = u.ID";
         PreparedStatement selectStatement = conn.prepareStatement(selectQuery);
         selectStatement.setInt(1, MyAds.adID);
         ResultSet resultSet = selectStatement.executeQuery();

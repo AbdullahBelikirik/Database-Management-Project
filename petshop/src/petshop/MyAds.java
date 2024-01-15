@@ -25,7 +25,7 @@ public class MyAds extends javax.swing.JFrame {
     
     private final String dbUrl = "jdbc:postgresql://localhost/petset";
     private final String dbUsername = "postgres";
-    private final String dbPassword = "mudafer69";
+    private final String dbPassword = "8703";
     Connection conn = null;
     public static int adID;
     
